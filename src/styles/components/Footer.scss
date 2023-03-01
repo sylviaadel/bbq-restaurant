@@ -1,0 +1,9 @@
+footer {
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: $blackColor;
+  color: $beigeColor;
+  box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.12);
+}
