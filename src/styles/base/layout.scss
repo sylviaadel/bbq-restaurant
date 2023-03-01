@@ -1,0 +1,57 @@
+/* Fonts */
+@import url("https://fonts.googleapis.com/css2?family=Lobster+Two:wght@400;700&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  font-family: "Lobster Two", sans-serif;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+
+h1 {
+  font-size: 30px;
+}
+
+h2 {
+  font-size: 26px;
+}
+
+p {
+  font-size: 20px;
+  line-height: 24px;
+}
+
+.hide {
+  display: none !important;
+}
+
+.btn-primary {
+  background-color: $orangeColor;
+  color: $whiteColor;
+  border-radius: 500px;
+  height: 56px;
+  line-height: 56px;
+  font-size: 20px;
+  font-weight: bold;
+  border: solid 1px $orangeColor;
+  padding: 0 20px;
+  display: inline-block;
+}
+
+@media (min-width: 860px) {
+  h1 {
+    font-size: 50px;
+  }
+  h2 {
+    font-size: 42px;
+  }
+  h3 {
+    font-size: 32px;
+  }
+  p {
+    font-size: 28px;
+    line-height: 36px;
+    letter-spacing: 3px;
+  }
+}
