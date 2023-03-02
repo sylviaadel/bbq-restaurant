@@ -10,20 +10,20 @@
 }
 
 h1 {
-  font-size: 30px;
+  font-size: 34px;
 }
 
 h2 {
-  font-size: 26px;
+  font-size: 28px;
+}
+
+h3 {
+  font-size: 20px;
 }
 
 p {
-  font-size: 20px;
+  font-size: 16px;
   line-height: 24px;
-}
-
-.hide {
-  display: none !important;
 }
 
 .btn-primary {
@@ -41,16 +41,16 @@ p {
 
 @media (min-width: 860px) {
   h1 {
-    font-size: 50px;
+    font-size: 55px;
   }
   h2 {
-    font-size: 42px;
+    font-size: 46px;
   }
   h3 {
-    font-size: 32px;
+    font-size: 30px;
   }
   p {
-    font-size: 28px;
+    font-size: 20px;
     line-height: 36px;
     letter-spacing: 3px;
   }
