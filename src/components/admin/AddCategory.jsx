@@ -1,6 +1,6 @@
 export default function AddCategory() {
   return (
-    <section className="add-category">
+    <section id="add-category">
       <h2>Add a new Category</h2>
       <form>
         <label>

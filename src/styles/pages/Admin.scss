@@ -11,6 +11,10 @@
     gap: $spacing-small;
     margin-top: 70px;
     padding: 2rem;
+    .btn-container {
+      display: flex;
+      gap: $spacing-medium;
+    }
     img {
       margin-bottom: 24px;
       min-width: 160px;
@@ -18,10 +22,15 @@
     }
     h1 {
       color: $beigeColor;
+      margin-bottom: $spacing-medium;
     }
   }
-  .add-category {
+  #add-category {
     background-color: $beigeColor;
+    padding: 2rem;
+  }
+  #add-product {
+    background-color: $lightGreyColor;
     padding: 2rem;
   }
   section {
@@ -42,7 +51,8 @@
           margin-bottom: $spacing-small;
         }
         input[type="text"],
-        textarea {
+        textarea,
+        select {
           border: solid 1px $orangeColor;
           border-radius: 5px;
           height: 43px;
@@ -56,6 +66,13 @@
         textarea {
           height: 90px;
         }
+        select {
+          -moz-appearance: none; /* Firefox */
+          -webkit-appearance: none; /* Safari and Chrome */
+          appearance: none;
+          background: url("../../assets/images/chevron-down-solid.svg")
+            no-repeat 95% center $whiteColor;
+        }
       }
     }
   }
@@ -67,6 +84,12 @@
     margin-top: 100px;
     p {
       font-size: 24px;
+    }
+  }
+  section {
+    * {
+      max-width: 650px;
+      margin: auto;
     }
   }
 }
