@@ -20,6 +20,11 @@ export default function AddProduct() {
           </select>
         </label>
         <label>
+          <span>Price</span>
+          <input type="text" />
+          <span className="currency">SEK</span>
+        </label>
+        <label>
           <span>Description</span>
           <textarea></textarea>
         </label>
