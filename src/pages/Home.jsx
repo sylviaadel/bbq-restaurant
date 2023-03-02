@@ -1,7 +1,7 @@
 import logoImg from "../assets/images/logo-slogan.svg";
 import CategoriesContainer from "../components/home/CategoriesContainer";
 
-export default function HomePage() {
+export default function Home() {
   return (
     <div id="Home">
       <section className="Hero">
