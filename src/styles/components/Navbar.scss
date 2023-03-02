@@ -10,8 +10,11 @@ nav.navbar {
   width: 100%;
   top: 0;
   z-index: 1;
-  img {
-    height: 50px;
+  .logo {
+    font-size: 34px;
+    color: $orangeColor;
+    text-decoration: none;
+    font-weight: bold;
   }
   ul {
     list-style: none;
@@ -33,12 +36,20 @@ nav.navbar {
   }
 }
 
+@media (max-width: 400px) {
+  nav.navbar {
+    .logo {
+      font-size: 28px;
+    }
+  }
+}
+
 @media (min-width: 860px) {
   nav.navbar {
     height: 100px;
     padding: 1.5rem;
-    img {
-      height: 75px;
+    .logo {
+      font-size: 55px;
     }
     ul {
       li {

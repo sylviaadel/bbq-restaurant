@@ -1,4 +1,4 @@
-import logoImg from "../assets/images/logo-slogan.png";
+import logoImg from "../assets/images/logo-slogan.svg";
 import CategoriesContainer from "../components/home/CategoriesContainer";
 
 export default function HomePage() {
