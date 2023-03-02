@@ -1,0 +1,129 @@
+.contact-header {
+  background-color: $blackColor;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 70px;
+  & > img {
+    width: 230px;
+    padding-top: 2rem;
+  }
+}
+.opening-times,
+.book-table,
+.address {
+  padding: $spacing-xlarge 0 0;
+  max-width: 305px;
+  margin: auto;
+  h3 {
+    color: $orangeColor;
+    margin-bottom: $spacing-medium;
+  }
+  ul {
+    margin-left: $spacing-medium;
+    li {
+      font-size: 16px;
+    }
+  }
+}
+.book-table {
+  input[type="text"] {
+    border: solid 1px $orangeColor;
+    border-radius: 5px;
+    height: 51px;
+    width: 100%;
+    font-size: 16px;
+    color: $blackColor;
+    padding: 0 $spacing-medium;
+    margin-bottom: $spacing-medium;
+    &:focus {
+      outline: none;
+    }
+    &::placeholder {
+      color: #63714d;
+      opacity: 1;
+    }
+    &:last-child {
+      margin-bottom: 0;
+    }
+    &.day-field {
+      background: url(../../assets/images/calendar-icon.svg) no-repeat 95%
+        center;
+    }
+    &.time-field {
+      background: url(../../assets/images/clock-icon.svg) no-repeat 95% center;
+    }
+  }
+  .react-datepicker-wrapper:has(.day-field),
+  .react-datepicker-wrapper:has(.time-field) {
+    margin-bottom: $spacing-medium;
+    & + .react-datepicker__tab-loop {
+      .react-datepicker__day--selected {
+        background-color: $orangeColor;
+        border-radius: 50%;
+      }
+      .react-datepicker__header {
+        background-color: #eef2f1;
+      }
+      .react-datepicker__time-list-item {
+        font-size: 14px;
+        &--selected {
+          background-color: $orangeColor !important;
+        }
+      }
+    }
+  }
+}
+.map {
+  margin: $spacing-xlarge $spacing-large;
+  padding-top: $spacing-small;
+  img {
+    max-height: 230px;
+    object-fit: cover;
+    width: 100%;
+  }
+}
+.react-datepicker--time-only,
+.react-datepicker {
+  .react-datepicker__triangle::before,
+  .react-datepicker__triangle::after {
+    left: -35px !important;
+  }
+}
+
+@media (min-width: 860px) {
+  .contact-header {
+    margin-top: 100px;
+    & > img {
+      width: 405px;
+      margin-top: 4rem;
+    }
+  }
+  .opening-times,
+  .book-table,
+  .address {
+    max-width: 650px;
+    ul li {
+      font-size: 20px;
+    }
+  }
+  .book-table input[type="text"] {
+    font-size: 20px;
+    &.day-field {
+      background: url(../../assets/images/calendar-icon.svg) no-repeat 98%
+        center;
+    }
+    &.time-field {
+      background: url(../../assets/images/clock-icon.svg) no-repeat 98% center;
+    }
+  }
+  .react-datepicker-popper {
+    li {
+      font-size: 16px !important;
+    }
+  }
+  .map img {
+    max-height: 580px;
+  }
+}
