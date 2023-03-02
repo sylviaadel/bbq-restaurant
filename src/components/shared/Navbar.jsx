@@ -10,12 +10,12 @@ export default function Navbar() {
       </Link>
       <ul>
         <li>
-          <Link to="">
+          <Link to="/menu">
             <FontAwesomeIcon icon={solid("utensils")} /> Menu
           </Link>
         </li>
         <li>
-          <Link to="/Contact">
+          <Link to="/contact">
             <FontAwesomeIcon icon={solid("phone")} /> Contact
           </Link>
         </li>

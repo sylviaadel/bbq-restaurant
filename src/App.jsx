@@ -1,7 +1,8 @@
 import { Routes, Route } from "react-router-dom";
 import "./styles/style.scss";
 import Navbar from "./components/shared/Navbar";
-import HomePage from "./pages/Home";
+import Home from "./pages/Home";
+import Menu from "./pages/Menu";
 import Contact from "./pages/Contact";
 import Footer from "./components/shared/Footer";
 import Admin from "./pages/Admin";
@@ -11,7 +12,8 @@ export default function App() {
     <div className="App">
       <Navbar />
       <Routes>
-        <Route path="/" element={<HomePage />} />
+        <Route path="/" element={<Home />} />
+        <Route path="/menu" element={<Menu />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/admin" element={<Admin />} />
       </Routes>

@@ -2,7 +2,7 @@ import logoImg from "../assets/images/logo-slogan.svg";
 import AddCategory from "../components/admin/AddCategory";
 import AddProduct from "../components/admin/AddProduct";
 
-export default function AdminPage() {
+export default function Admin() {
   return (
     <div id="Admin">
       <section className="Hero">

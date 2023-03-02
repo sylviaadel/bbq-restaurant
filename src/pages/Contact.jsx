@@ -4,7 +4,7 @@ import Address from "../components/contact/Address";
 import Map from "../components/contact/Map";
 import ChefImg from "../assets/images/chef-img.png";
 
-export default function ContactPage() {
+export default function Contact() {
   return (
     <>
       <header className="contact-header">
