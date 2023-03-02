@@ -41,6 +41,20 @@ p {
   text-decoration: none;
 }
 
+.small-btn {
+  background-color: $orangeColor;
+  border-radius: 500px;
+  height: 30px;
+  color: $whiteColor;
+  font-size: 16px;
+  width: 120px;
+  border: 0;
+  justify-content: center;
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+}
+
 @media (min-width: 860px) {
   h1 {
     font-size: 55px;
@@ -58,5 +72,10 @@ p {
   }
   .primary-btn {
     font-size: 30px;
+  }
+  .small-btn {
+    height: 45px;
+    font-size: 20px;
+    width: 170px;
   }
 }

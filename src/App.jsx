@@ -4,6 +4,7 @@ import Navbar from "./components/shared/Navbar";
 import HomePage from "./pages/Home";
 import Contact from "./pages/Contact";
 import Footer from "./components/shared/Footer";
+import Admin from "./pages/Admin";
 
 export default function App() {
   return (
@@ -11,7 +12,8 @@ export default function App() {
       <Navbar />
       <Routes>
         <Route path="/" element={<HomePage />} />
-        <Route path="/Contact" element={<Contact />} />
+        <Route path="/contact" element={<Contact />} />
+        <Route path="/admin" element={<Admin />} />
       </Routes>
       <Footer />
     </div>

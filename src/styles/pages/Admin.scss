@@ -1,0 +1,95 @@
+#Admin {
+  .Hero {
+    min-height: calc(100vh - 70px);
+    background: linear-gradient(rgba(46, 44, 42, 0.7), rgba(46, 44, 42, 0.7)),
+      url("../../assets/images/hero-admin.jpg") center no-repeat;
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: $spacing-small;
+    margin-top: 70px;
+    padding: 2rem;
+    .btn-container {
+      display: flex;
+      gap: $spacing-medium;
+    }
+    img {
+      margin-bottom: 24px;
+      min-width: 160px;
+      width: 30%;
+    }
+    h1 {
+      color: $beigeColor;
+      margin-bottom: $spacing-medium;
+    }
+  }
+  #add-category {
+    background-color: $beigeColor;
+    padding: 2rem;
+  }
+  #add-product {
+    background-color: $lightGreyColor;
+    padding: 2rem;
+  }
+  section {
+    h2 {
+      color: $orangeColor;
+      text-align: center;
+      margin-bottom: $spacing-large;
+    }
+    form {
+      label {
+        margin-bottom: $spacing-medium;
+        display: block;
+        span {
+          color: $blackColor;
+          font-size: 16px;
+          font-weight: bold;
+          display: block;
+          margin-bottom: $spacing-small;
+        }
+        input[type="text"],
+        textarea,
+        select {
+          border: solid 1px $orangeColor;
+          border-radius: 5px;
+          height: 43px;
+          background-color: $whiteColor;
+          width: 100%;
+          padding: 10px;
+          &:focus {
+            outline: none;
+          }
+        }
+        textarea {
+          height: 90px;
+        }
+        select {
+          -moz-appearance: none; /* Firefox */
+          -webkit-appearance: none; /* Safari and Chrome */
+          appearance: none;
+          background: url("../../assets/images/chevron-down-solid.svg")
+            no-repeat 95% center $whiteColor;
+        }
+      }
+    }
+  }
+}
+
+@media (min-width: 860px) {
+  .Hero {
+    height: calc(100vh - 100px);
+    margin-top: 100px;
+    p {
+      font-size: 24px;
+    }
+  }
+  section {
+    * {
+      max-width: 650px;
+      margin: auto;
+    }
+  }
+}
