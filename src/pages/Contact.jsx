@@ -1,7 +1,7 @@
-import BookTable from "../components/Contact/BookTable";
-import OpeningTimes from "../components/Contact/OpeningTimes";
-import Address from "../components/Contact/Address";
-import Map from "../components/Contact/Map";
+import BookTable from "../components/contact/BookTable";
+import OpeningTimes from "../components/contact/OpeningTimes";
+import Address from "../components/contact/Address";
+import Map from "../components/contact/Map";
 import ChefImg from "../assets/images/chef-img.png";
 
 export default function Contact() {
