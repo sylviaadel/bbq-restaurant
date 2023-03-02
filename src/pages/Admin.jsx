@@ -1,6 +1,7 @@
 import logoImg from "../assets/images/logo-slogan.svg";
+import AddCategory from "../components/admin/AddCategory";
 
-export default function HomePage() {
+export default function AdminPage() {
   return (
     <div id="Admin">
       <section className="Hero">
@@ -10,6 +11,7 @@ export default function HomePage() {
         />
         <h1>Welcome Admin</h1>
       </section>
+      <AddCategory />
     </div>
   );
 }

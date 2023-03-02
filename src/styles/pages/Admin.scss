@@ -20,6 +20,45 @@
       color: $beigeColor;
     }
   }
+  .add-category {
+    background-color: $beigeColor;
+    padding: 2rem;
+  }
+  section {
+    h2 {
+      color: $orangeColor;
+      text-align: center;
+      margin-bottom: $spacing-large;
+    }
+    form {
+      label {
+        margin-bottom: $spacing-medium;
+        display: block;
+        span {
+          color: $blackColor;
+          font-size: 16px;
+          font-weight: bold;
+          display: block;
+          margin-bottom: $spacing-small;
+        }
+        input[type="text"],
+        textarea {
+          border: solid 1px $orangeColor;
+          border-radius: 5px;
+          height: 43px;
+          background-color: $whiteColor;
+          width: 100%;
+          padding: 10px;
+          &:focus {
+            outline: none;
+          }
+        }
+        textarea {
+          height: 90px;
+        }
+      }
+    }
+  }
 }
 
 @media (min-width: 860px) {
