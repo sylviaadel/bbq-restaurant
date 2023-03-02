@@ -1,4 +1,5 @@
 import logoImg from "../assets/images/logo-slogan.png";
+import CategoriesContainer from "../components/home/CategoriesContainer";
 
 export default function HomePage() {
   return (
@@ -10,6 +11,7 @@ export default function HomePage() {
         />
         <p>Count On Us When It Comes To BBQ</p>
       </section>
+      <CategoriesContainer />
     </div>
   );
 }
