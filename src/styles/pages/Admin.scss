@@ -43,12 +43,25 @@
       label {
         margin-bottom: $spacing-medium;
         display: block;
+        position: relative;
+        &:has(.currency) input {
+          padding-right: 60px !important;
+        }
         span {
           color: $blackColor;
           font-size: 16px;
           font-weight: bold;
           display: block;
           margin-bottom: $spacing-small;
+        }
+        .currency {
+          position: absolute;
+          top: 10px;
+          right: 20px;
+          position: absolute;
+          top: 40px;
+          font-weight: normal;
+          opacity: 0.9;
         }
         input[type="text"],
         textarea,
