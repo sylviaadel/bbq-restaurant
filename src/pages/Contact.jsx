@@ -8,10 +8,7 @@ export default function Contact() {
   return (
     <>
       <header className="contact-header">
-        <img
-          src={ChefImg}
-          alt="The chef holding a plate of vegtables in his kitchen."
-        />
+        <img src={ChefImg} alt="A chef holding a stick of meat pieces." />
       </header>
       <OpeningTimes />
       <BookTable />
