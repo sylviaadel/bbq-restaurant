@@ -7,11 +7,11 @@ export default function Navbar() {
   return (
     <nav className="navbar">
       <Link to="/">
-        <img src={mainLogo} alt="A piece of meat with fork" />
+        <img src={mainLogo} alt="A piece of meat with fork on grill" />
       </Link>
       <ul>
         <li>
-          <Link>
+          <Link to="">
             <FontAwesomeIcon icon={solid("utensils")} /> Menu
           </Link>
         </li>
