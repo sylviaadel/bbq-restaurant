@@ -16,7 +16,7 @@ export default function Navbar() {
           </Link>
         </li>
         <li>
-          <Link to="">
+          <Link to="/Contact">
             <FontAwesomeIcon icon={solid("phone")} /> Contact
           </Link>
         </li>

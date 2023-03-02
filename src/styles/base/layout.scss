@@ -26,17 +26,19 @@ p {
   line-height: 24px;
 }
 
-.btn-primary {
+.primary-btn {
   background-color: $orangeColor;
-  color: $whiteColor;
   border-radius: 500px;
-  height: 56px;
-  line-height: 56px;
-  font-size: 20px;
-  font-weight: bold;
-  border: solid 1px $orangeColor;
-  padding: 0 20px;
-  display: inline-block;
+  height: 60px;
+  color: $whiteColor;
+  font-size: 28px;
+  width: 100%;
+  border: 0;
+  font-weight: 500;
+  justify-content: center;
+  display: flex;
+  align-items: center;
+  text-decoration: none;
 }
 
 @media (min-width: 860px) {
@@ -53,5 +55,8 @@ p {
     font-size: 20px;
     line-height: 36px;
     letter-spacing: 3px;
+  }
+  .primary-btn {
+    font-size: 30px;
   }
 }
