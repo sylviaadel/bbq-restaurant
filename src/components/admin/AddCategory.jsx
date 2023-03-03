@@ -1,9 +1,11 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 export default function AddCategory({ onCreateCategory }) {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [imageURL, setImageURL] = useState("");
+  const navigate = useNavigate();
 
   function onSubmit(e) {
     const data = {
@@ -14,6 +16,7 @@ export default function AddCategory({ onCreateCategory }) {
     console.log("from add category ", title, description, imageURL);
     e.preventDefault();
     onCreateCategory(data);
+    navigate("/menu");
   }
 
   return (
