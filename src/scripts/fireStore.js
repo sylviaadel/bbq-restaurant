@@ -1,5 +1,12 @@
-import { collection, getDocs, getDoc, doc } from "firebase/firestore";
+import { collection, getDocs, getDoc, doc, addDoc } from "firebase/firestore";
 import { database } from "./firebaseSetup";
+
+export async function createDocument(collectionName, data) {
+  const reference = collection(database, collectionName);
+  const document = await addDoc(reference, data);
+
+  console.log("Confirm ++++", document.id);
+}
 
 export async function readDocument(collectionName, documentId) {
   const reference = doc(database, collectionName, documentId);

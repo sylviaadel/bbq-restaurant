@@ -1,14 +1,21 @@
 import { useState } from "react";
 
-export default function AddCategory() {
+export default function AddCategory({ onCreateCategory }) {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [imageURL, setImageURL] = useState("");
 
   function onSubmit(e) {
+    const data = {
+      title: title,
+      imageURL: imageURL,
+      description: description,
+    };
+    console.log("from add category ", title, description, imageURL);
     e.preventDefault();
-    console.log("data", title, description, imageURL);
+    onCreateCategory(data);
   }
+
   return (
     <form onSubmit={(e) => onSubmit(e)}>
       <label>
