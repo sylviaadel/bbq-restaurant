@@ -1,8 +1,7 @@
 import { initializeApp } from "firebase/app";
 import { getFirestore } from "firebase/firestore";
-import { collection, getDocs } from "firebase/firestore";
 
-const firebaseConfig = {
+const setup = {
   apiKey: "AIzaSyAZHOgaa-QLbVr8FC15uaz7B-5yG9ZQq0A",
   authDomain: "grill-bar-restaurant.firebaseapp.com",
   projectId: "grill-bar-restaurant",
@@ -11,17 +10,5 @@ const firebaseConfig = {
   appId: "1:649795011961:web:9a68594f1e3722b7d0dba8",
 };
 
-const app = initializeApp(firebaseConfig);
-const database = getFirestore(app);
-
-export async function readDocuments() {
-  const querySnapshot = await getDocs(collection(database, "categories"));
-  const result = [];
-
-  querySnapshot.forEach((doc) => {
-    const document = { id: doc.id, ...doc.data() };
-    result.push(document);
-  });
-
-  return result;
-}
+const firebase = initializeApp(setup);
+export const database = getFirestore(firebase);

@@ -1,18 +1,27 @@
 import { useEffect, useState } from "react";
-import { readDocuments } from "../scripts/firebaseSetup";
+import { readDocuments } from "../scripts/fireStore";
 import Category from "../components/home/CategoryItem";
 import logoImg from "../assets/images/logo-slogan.svg";
 
 export default function Home() {
+  const [status, setStatus] = useState(0);
   const [data, setData] = useState([]);
 
   useEffect(() => {
-    loadData();
+    loadData("categories");
   }, []);
+  async function loadData(collectionName) {
+    const data = await readDocuments(collectionName).catch(onFail);
+    onSuccess(data);
+  }
 
-  async function loadData() {
-    const data = await readDocuments();
+  function onSuccess(data) {
     setData(data);
+    setStatus(1);
+  }
+
+  function onFail() {
+    setStatus(2);
   }
   const Items = data.map((item) => <Category key={item.id} item={item} />);
 
@@ -25,7 +34,11 @@ export default function Home() {
         />
         <p>Count On Us When It Comes To BBQ</p>
       </section>
-      <div className="CategoriesContainer">{Items}</div>
+      {status === 0 && <p>Loading...</p>}
+      {status === 1 && (
+        <section className="CategoriesContainer">{Items}</section>
+      )}
+      {status === 2 && <p>Error</p>}
     </div>
   );
 }
