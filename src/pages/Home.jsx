@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { readDocuments } from "../scripts/fireStore";
 import Category from "../components/home/CategoryItem";
 import logoImg from "../assets/images/logo-slogan.svg";
+import Spinner from "../components/shared/Spinner";
 
 export default function Home() {
   const [status, setStatus] = useState(0);
@@ -34,7 +35,7 @@ export default function Home() {
         />
         <p>Count On Us When It Comes To BBQ</p>
       </section>
-      {status === 0 && <p>Loading...</p>}
+      {status === 0 && <Spinner />}
       {status === 1 && (
         <section className="CategoriesContainer">{Items}</section>
       )}

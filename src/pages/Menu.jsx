@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { readDocuments } from "../scripts/fireStore";
 import CategoryItem from "../components/CategoryItem";
+import Spinner from "../components/shared/Spinner";
 
 export default function Menu() {
   const [status, setStatus] = useState(0);
@@ -28,7 +29,7 @@ export default function Menu() {
   return (
     <div id="Menu">
       <h1>Our Main Categories</h1>
-      {status === 0 && <p>Loading...</p>}
+      {status === 0 && <Spinner />}
       {status === 1 && <section className="categories-items">{Items}</section>}
       {status === 2 && <p>Error</p>}
     </div>
