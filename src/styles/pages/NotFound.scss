@@ -1,0 +1,30 @@
+.error {
+  position: relative;
+  height: calc(100vh - 130px);
+  background: $beigeColor;
+  margin-top: 70px;
+  h1 {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    min-width: 305px;
+    width: 70%;
+    text-align: center;
+    color: $beigeColor;
+    background: $blackColor;
+    padding: 2rem 1rem;
+    border-radius: 10px;
+    svg {
+      margin-right: $spacing-small;
+    }
+  }
+}
+
+@media (min-width: 860px) {
+  .error {
+    h1 {
+      width: 850px;
+    }
+  }
+}
