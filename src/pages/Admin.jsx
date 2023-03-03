@@ -20,8 +20,14 @@ export default function Admin() {
           </a>
         </div>
       </section>
-      <AddCategory />
-      <AddProduct />
+      <section id="add-category">
+        <h2>Add a new Category</h2>
+        <AddCategory />
+      </section>
+      <section id="add-product">
+        <h2>Add a new Product</h2>
+        <AddProduct />
+      </section>
     </div>
   );
 }
