@@ -1,14 +1,24 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
-export default function AddCategory() {
+export default function AddCategory({ onCreateCategory }) {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [imageURL, setImageURL] = useState("");
+  const navigate = useNavigate();
 
   function onSubmit(e) {
+    const data = {
+      title: title,
+      imageURL: imageURL,
+      description: description,
+    };
+    console.log("from add category ", title, description, imageURL);
     e.preventDefault();
-    console.log("data", title, description, imageURL);
+    onCreateCategory(data);
+    navigate("/menu");
   }
+
   return (
     <form onSubmit={(e) => onSubmit(e)}>
       <label>

@@ -1,8 +1,13 @@
 import logoImg from "../assets/images/logo-slogan.svg";
 import AddCategory from "../components/admin/AddCategory";
 import AddProduct from "../components/admin/AddProduct";
+import { createDocument } from "../scripts/fireStore";
 
 export default function Admin() {
+  function onCreateCategory(data) {
+    console.log("upload to db");
+    createDocument("categories", data);
+  }
   return (
     <div id="Admin">
       <section className="Hero">
@@ -22,7 +27,7 @@ export default function Admin() {
       </section>
       <section id="add-category">
         <h2>Add a new Category</h2>
-        <AddCategory />
+        <AddCategory onCreateCategory={onCreateCategory} />
       </section>
       <section id="add-product">
         <h2>Add a new Product</h2>
