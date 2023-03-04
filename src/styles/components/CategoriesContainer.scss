@@ -29,15 +29,8 @@
         vertical-align: bottom;
       }
       a {
-        color: $orangeColor;
-        font-weight: 600;
-        text-decoration: none;
         margin-top: $spacing-medium;
-        img {
-          height: 12px;
-          float: left;
-          margin: 4px 5px 0 0;
-        }
+        float: right;
       }
     }
   }
