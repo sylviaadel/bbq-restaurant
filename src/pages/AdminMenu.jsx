@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { readDocuments } from "../scripts/fireStore";
+import { readDocuments, deleteDocument } from "../scripts/fireStore";
 import CategoryItem from "../components/shared/CategoryItem";
 import Spinner from "../components/shared/Spinner";
 
@@ -24,7 +24,19 @@ export default function Menu() {
     setStatus(2);
   }
 
-  const Items = data.map((item) => <CategoryItem key={item.id} item={item} />);
+  async function onDeleteItem(id) {
+    //alert(id);
+    const clonedCategories = [...data];
+    const itemIndex = clonedCategories.findIndex((item) => item.id === id);
+    //console.log(clonedCategories);
+    clonedCategories.splice(itemIndex, 1);
+    setData(clonedCategories);
+    await deleteDocument("categories", id);
+  }
+
+  const Items = data.map((item) => (
+    <CategoryItem onDeleteItem={onDeleteItem} key={item.id} item={item} />
+  ));
 
   return (
     <div id="Menu" className="admin-menu">
