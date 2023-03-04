@@ -13,7 +13,6 @@ export default function AddCategory({ onCreateCategory }) {
       imageURL: imageURL,
       description: description,
     };
-    console.log("from add category ", title, description, imageURL);
     e.preventDefault();
     onCreateCategory(data);
     navigate("/menu");

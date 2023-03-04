@@ -4,8 +4,9 @@ import { database } from "./firebaseSetup";
 export async function createDocument(collectionName, data) {
   const reference = collection(database, collectionName);
   const document = await addDoc(reference, data);
+  const result = document.id;
 
-  console.log("Confirm ++++", document.id);
+  return result;
 }
 
 export async function readDocument(collectionName, documentId) {
