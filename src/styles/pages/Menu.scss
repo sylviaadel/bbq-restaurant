@@ -17,7 +17,8 @@
       background-color: $blackColor;
       width: 305px;
       border-radius: 10px;
-      padding-bottom: $spacing-small;
+      position: relative;
+      padding-bottom: 115px;
       h2 {
         color: $orangeColor;
         padding: $spacing-medium 0;
@@ -36,6 +37,10 @@
       }
       .small-btn {
         margin: $spacing-medium auto;
+        position: absolute;
+        bottom: $spacing-medium;
+        transform: translateX(-50%);
+        left: 50%;
       }
     }
   }

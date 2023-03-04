@@ -13,6 +13,7 @@
       margin: auto;
       gap: $spacing-medium;
       padding: 2rem 0;
+      align-items: end;
       .CategoryImgContainer {
         img {
           height: 132px;
@@ -22,6 +23,7 @@
       }
       h2 {
         color: $orangeColor;
+        align-self: flex-start;
       }
       p {
         text-align: justify;
