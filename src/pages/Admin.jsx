@@ -5,7 +5,6 @@ import { createDocument } from "../scripts/fireStore";
 
 export default function Admin() {
   function onCreateCategory(data) {
-    console.log("upload to db");
     createDocument("categories", data);
   }
   return (

@@ -23,6 +23,7 @@ export default function AddCategory({ onCreateCategory }) {
       <label>
         <span>Title</span>
         <input
+          required
           type="text"
           value={title}
           onChange={(e) => setTitle(e.target.value)}
@@ -31,6 +32,7 @@ export default function AddCategory({ onCreateCategory }) {
       <label>
         <span>Image URL</span>
         <input
+          required
           type="text"
           value={imageURL}
           onChange={(e) => setImageURL(e.target.value)}
@@ -39,6 +41,7 @@ export default function AddCategory({ onCreateCategory }) {
       <label>
         <span>Description</span>
         <textarea
+          required
           value={description}
           onChange={(e) => setDescription(e.target.value)}
         ></textarea>
