@@ -15,7 +15,7 @@ export default function AddCategory({ onCreateCategory }) {
     };
     e.preventDefault();
     onCreateCategory(data);
-    navigate("/menu");
+    navigate("/admin-menu");
   }
 
   return (

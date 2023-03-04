@@ -1,4 +1,11 @@
-import { collection, getDocs, getDoc, doc, addDoc } from "firebase/firestore";
+import {
+  collection,
+  getDocs,
+  getDoc,
+  doc,
+  addDoc,
+  deleteDoc,
+} from "firebase/firestore";
 import { database } from "./firebaseSetup";
 
 export async function createDocument(collectionName, data) {
@@ -23,4 +30,11 @@ export async function readDocuments(collectionName) {
   const result = spanshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
 
   return result;
+}
+
+export async function deleteDocument(collectionName, id) {
+  const reference = doc(database, collectionName, id);
+  await deleteDoc(reference);
+
+  return `updated document with id ${id}`;
 }
