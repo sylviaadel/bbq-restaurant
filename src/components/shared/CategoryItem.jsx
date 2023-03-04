@@ -9,12 +9,11 @@ export default function CategoryItem({ item }) {
   const [categories, setCategories] = useState("");
 
   async function onDelete(id) {
-    const message = `Are you sure you want to delete ${title}`;
-    const result = window.confirm(message);
-    if (!result) return;
     const clonedCategories = [...categories];
     const itemIndex = clonedCategories.findIndex((item) => item.id === id);
+    console.log(clonedCategories);
     clonedCategories.splice(itemIndex, 1);
+    debugger;
     setCategories(clonedCategories);
     await deleteDocument("categories", id);
   }
