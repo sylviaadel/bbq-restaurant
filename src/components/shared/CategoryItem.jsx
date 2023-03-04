@@ -1,11 +1,9 @@
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { solid } from "@fortawesome/fontawesome-svg-core/import.macro"; // <-- import styles to be used
-import { useState } from "react";
 
 export default function CategoryItem({ item, onDeleteItem }) {
   const { id, title, description, imageURL } = item;
-  const [categories, setCategories] = useState("");
 
   async function onDelete(id) {
     onDeleteItem(id);
