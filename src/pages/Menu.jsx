@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { readDocuments } from "../scripts/fireStore";
-import CategoryItem from "../components/CategoryItem";
+import CategoryItem from "../components/shared/CategoryItem";
 import Spinner from "../components/shared/Spinner";
 
 export default function Menu() {
