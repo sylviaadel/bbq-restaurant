@@ -1,7 +1,23 @@
 import { Link } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { solid } from "@fortawesome/fontawesome-svg-core/import.macro"; // <-- import styles to be used
+import { deleteDocument } from "../../scripts/fireStore";
+import { useState } from "react";
 
 export default function CategoryItem({ item }) {
   const { id, title, description, imageURL } = item;
+  const [categories, setCategories] = useState("");
+
+  async function onDelete(id) {
+    const message = `Are you sure you want to delete ${title}`;
+    const result = window.confirm(message);
+    if (!result) return;
+    const clonedCategories = [...categories];
+    const itemIndex = clonedCategories.findIndex((item) => item.id === id);
+    clonedCategories.splice(itemIndex, 1);
+    setCategories(clonedCategories);
+    await deleteDocument("categories", id);
+  }
 
   return (
     <article key={id}>
@@ -9,9 +25,15 @@ export default function CategoryItem({ item }) {
       <div>
         <h2>{title}</h2>
         <p>{description}</p>
-        <Link to="" className="small-btn">
+        <Link to="" className="small-btn view-menu">
           View Menu
         </Link>
+        <button
+          className="delete-category small-btn"
+          onClick={() => onDelete(id)}
+        >
+          <FontAwesomeIcon icon={solid("trash")} /> Delete category
+        </button>
       </div>
     </article>
   );

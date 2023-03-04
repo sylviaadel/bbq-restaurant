@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import logoImg from "../assets/images/logo-slogan.svg";
 import AddCategory from "../components/admin/AddCategory";
 import AddProduct from "../components/admin/AddProduct";
@@ -22,6 +23,9 @@ export default function Admin() {
           <a href="#add-product" className="small-btn">
             Add Product
           </a>
+          <Link to="/admin-menu" className="small-btn">
+            Delete Category
+          </Link>
         </div>
       </section>
       <section id="add-category">

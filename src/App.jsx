@@ -6,6 +6,7 @@ import Menu from "./pages/Menu";
 import Contact from "./pages/Contact";
 import Footer from "./components/shared/Footer";
 import Admin from "./pages/Admin";
+import AdminMenu from "./pages/AdminMenu";
 import NotFound from "./pages/NotFound";
 
 export default function App() {
@@ -17,6 +18,7 @@ export default function App() {
         <Route path="/menu" element={<Menu />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/admin" element={<Admin />} />
+        <Route path="/admin-menu" element={<AdminMenu />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
       <Footer />

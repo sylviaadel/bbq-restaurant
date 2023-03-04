@@ -34,6 +34,9 @@
         margin-top: $spacing-medium;
         float: right;
       }
+      .delete-category {
+        display: none;
+      }
     }
   }
 }
