@@ -25,10 +25,8 @@ export default function Menu() {
   }
 
   async function onDeleteItem(id) {
-    //alert(id);
     const clonedCategories = [...data];
     const itemIndex = clonedCategories.findIndex((item) => item.id === id);
-    //console.log(clonedCategories);
     clonedCategories.splice(itemIndex, 1);
     setData(clonedCategories);
     await deleteDocument("categories", id);
