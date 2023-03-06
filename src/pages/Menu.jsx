@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { readDocuments } from "../scripts/fireStore";
+import { readDocuments } from "../scripts/fireStore/readDocuments";
 import CategoryItem from "../components/shared/CategoryItem";
 import Spinner from "../components/shared/Spinner";
 

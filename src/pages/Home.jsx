@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { readDocuments } from "../scripts/fireStore";
+import { readDocuments } from "../scripts/fireStore/readDocuments";
 import Category from "../components/shared/CategoryItem";
 import logoImg from "../assets/images/logo-slogan.svg";
 import Spinner from "../components/shared/Spinner";
