@@ -1,12 +1,20 @@
 import { Link } from "react-router-dom";
+import { deleteDocument } from "../../scripts/fireStore/deleteDocument";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { solid } from "@fortawesome/fontawesome-svg-core/import.macro"; // <-- import styles to be used
+import { useCategories } from "../../state/CategoriesProvider";
 
-export default function CategoryItem({ item, onDeleteItem }) {
+export default function CategoryItem({ item, collectionName }) {
   const { id, title, description, imageURL } = item;
+  const { dispatch } = useCategories();
 
   async function onDelete(id) {
-    onDeleteItem(id);
+    const message = `Are you sure you want to delete this item?`;
+    const result = window.confirm(message);
+    if (!result) return;
+
+    await deleteDocument(collectionName, id);
+    dispatch({ type: "delete", payload: id });
   }
 
   return (

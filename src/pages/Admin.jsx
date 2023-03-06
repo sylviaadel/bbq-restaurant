@@ -2,12 +2,8 @@ import { Link } from "react-router-dom";
 import logoImg from "../assets/images/logo-slogan.svg";
 import AddCategory from "../components/admin/AddCategory";
 import AddProduct from "../components/admin/AddProduct";
-import { createDocument } from "../scripts/fireStore/createDocument";
 
 export default function Admin() {
-  function onCreateCategory(data) {
-    createDocument("categories", data);
-  }
   return (
     <div id="Admin">
       <section className="Hero">
@@ -30,7 +26,7 @@ export default function Admin() {
       </section>
       <section id="add-category">
         <h2>Add a new Category</h2>
-        <AddCategory onCreateCategory={onCreateCategory} />
+        <AddCategory />
       </section>
       <section id="add-product">
         <h2>Add a new Product</h2>

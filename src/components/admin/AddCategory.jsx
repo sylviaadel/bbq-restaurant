@@ -1,20 +1,25 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { createDocument } from "../../scripts/fireStore/createDocument";
+import { useCategories } from "../../state/CategoriesProvider";
 
-export default function AddCategory({ onCreateCategory }) {
+export default function AddCategory() {
+  const { dispatch } = useCategories();
+  const COLLECTION_NAME = "categories";
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [imageURL, setImageURL] = useState("");
   const navigate = useNavigate();
 
-  function onSubmit(e) {
+  async function onSubmit(e) {
     const data = {
       title: title,
       imageURL: imageURL,
       description: description,
     };
     e.preventDefault();
-    onCreateCategory(data);
+    const documentId = await createDocument(COLLECTION_NAME, data);
+    dispatch({ type: "create", payload: { id: documentId, ...data } });
     navigate("/admin-menu");
   }
 
