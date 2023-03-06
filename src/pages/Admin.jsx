@@ -4,6 +4,7 @@ import AddCategory from "../components/admin/AddCategory";
 import AddProduct from "../components/admin/AddProduct";
 
 export default function Admin() {
+  const COLLECTION_NAME = "categories";
   return (
     <div id="Admin">
       <section className="Hero">
@@ -26,7 +27,7 @@ export default function Admin() {
       </section>
       <section id="add-category">
         <h2>Add a new Category</h2>
-        <AddCategory />
+        <AddCategory collectionName={COLLECTION_NAME} />
       </section>
       <section id="add-product">
         <h2>Add a new Product</h2>

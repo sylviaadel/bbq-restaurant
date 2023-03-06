@@ -3,9 +3,8 @@ import { useNavigate } from "react-router-dom";
 import { createDocument } from "../../scripts/fireStore/createDocument";
 import { useCategories } from "../../state/CategoriesProvider";
 
-export default function AddCategory() {
+export default function AddCategory({ collectionName }) {
   const { dispatch } = useCategories();
-  const COLLECTION_NAME = "categories";
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [imageURL, setImageURL] = useState("");
@@ -18,7 +17,7 @@ export default function AddCategory() {
       description: description,
     };
     e.preventDefault();
-    const documentId = await createDocument(COLLECTION_NAME, data);
+    const documentId = await createDocument(collectionName, data);
     dispatch({ type: "create", payload: { id: documentId, ...data } });
     navigate("/admin-menu");
   }
