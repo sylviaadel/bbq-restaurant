@@ -1,15 +1,16 @@
 import { useEffect, useState } from "react";
 import { readDocuments } from "../scripts/fireStore/readDocuments";
-import { deleteDocument } from "../scripts/fireStore/deleteDocument";
 import CategoryItem from "../components/shared/CategoryItem";
 import Spinner from "../components/shared/Spinner";
+import { useCategories } from "../state/CategoriesProvider";
 
 export default function Menu() {
+  const { data, dispatch } = useCategories();
   const [status, setStatus] = useState(0);
-  const [data, setData] = useState([]);
+  const COLLECTION_NAME = "categories";
 
   useEffect(() => {
-    loadData("categories");
+    loadData(COLLECTION_NAME);
   }, []);
   async function loadData(collectionName) {
     const data = await readDocuments(collectionName).catch(onFail);
@@ -17,7 +18,7 @@ export default function Menu() {
   }
 
   function onSuccess(data) {
-    setData(data);
+    dispatch({ type: "initializeArray", payload: data });
     setStatus(1);
   }
 
@@ -25,16 +26,8 @@ export default function Menu() {
     setStatus(2);
   }
 
-  async function onDeleteItem(id) {
-    const clonedCategories = [...data];
-    const itemIndex = clonedCategories.findIndex((item) => item.id === id);
-    clonedCategories.splice(itemIndex, 1);
-    setData(clonedCategories);
-    await deleteDocument("categories", id);
-  }
-
   const Items = data.map((item) => (
-    <CategoryItem onDeleteItem={onDeleteItem} key={item.id} item={item} />
+    <CategoryItem key={item.id} item={item} collectionName={COLLECTION_NAME} />
   ));
 
   return (

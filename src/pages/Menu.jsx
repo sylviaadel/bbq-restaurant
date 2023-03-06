@@ -2,13 +2,15 @@ import { useEffect, useState } from "react";
 import { readDocuments } from "../scripts/fireStore/readDocuments";
 import CategoryItem from "../components/shared/CategoryItem";
 import Spinner from "../components/shared/Spinner";
+import { useCategories } from "../state/CategoriesProvider";
 
 export default function Menu() {
+  const { data, dispatch } = useCategories();
   const [status, setStatus] = useState(0);
-  const [data, setData] = useState([]);
+  const COLLECTION_NAME = "categories";
 
   useEffect(() => {
-    loadData("categories");
+    loadData(COLLECTION_NAME);
   }, []);
   async function loadData(collectionName) {
     const data = await readDocuments(collectionName).catch(onFail);
@@ -16,7 +18,7 @@ export default function Menu() {
   }
 
   function onSuccess(data) {
-    setData(data);
+    dispatch({ type: "initializeArray", payload: data });
     setStatus(1);
   }
 
