@@ -3,8 +3,7 @@ import logoImg from "../assets/images/logo-slogan.svg";
 import AddCategory from "../components/admin/AddCategory";
 import AddProduct from "../components/admin/AddProduct";
 
-export default function Admin() {
-  const COLLECTION_NAME = "categories";
+export default function Admin({ collection }) {
   return (
     <div id="Admin">
       <section className="Hero">
@@ -27,7 +26,7 @@ export default function Admin() {
       </section>
       <section id="add-category">
         <h2>Add a new Category</h2>
-        <AddCategory collectionName={COLLECTION_NAME} />
+        <AddCategory collectionName={collection} />
       </section>
       <section id="add-product">
         <h2>Add a new Product</h2>

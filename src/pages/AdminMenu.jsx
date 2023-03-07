@@ -4,16 +4,15 @@ import CategoryItem from "../components/shared/CategoryItem";
 import Spinner from "../components/shared/Spinner";
 import { useCategories } from "../state/CategoriesProvider";
 
-export default function Menu() {
+export default function Menu({ collection }) {
   const { data, dispatch } = useCategories();
   const [status, setStatus] = useState(0);
-  const COLLECTION_NAME = "categories";
 
   useEffect(() => {
-    loadData(COLLECTION_NAME);
+    loadData(collection);
   }, []);
-  async function loadData(collectionName) {
-    const data = await readDocuments(collectionName).catch(onFail);
+  async function loadData(collection) {
+    const data = await readDocuments(collection).catch(onFail);
     onSuccess(data);
   }
 
@@ -27,7 +26,7 @@ export default function Menu() {
   }
 
   const Items = data.map((item) => (
-    <CategoryItem key={item.id} item={item} collectionName={COLLECTION_NAME} />
+    <CategoryItem key={item.id} item={item} collectionName={collection} />
   ));
 
   return (

@@ -6,20 +6,19 @@ import { useCategories } from "../state/CategoriesProvider";
 import ProductItem from "../components/category/ProductItem";
 import Spinner from "../components/shared/Spinner";
 
-export default function Category() {
+export default function Category({ collection }) {
   let { id } = useParams();
   const { data, dispatch } = useCategories();
   const [status, setStatus] = useState(0);
-  const COLLECTION_NAME = "categories";
   const currentCategory = data.find((c) => c.id === id);
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
-    loadData(COLLECTION_NAME);
+    loadData(collection);
   }, []);
-  async function loadData(collectionName) {
-    const data = await readDocuments(collectionName).catch(onFail);
-    var result = await readProducts(`${COLLECTION_NAME}/${id}/products`);
+  async function loadData(collection) {
+    const data = await readDocuments(collection).catch(onFail);
+    var result = await readProducts(`${collection}/${id}/products`);
     setProducts(result);
     onSuccess(data);
   }

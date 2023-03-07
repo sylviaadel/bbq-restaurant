@@ -1,10 +1,10 @@
 import { Link } from "react-router-dom";
 
 export default function ProductItem({ item }) {
-  const { id, title, description, imageURL, price } = item;
+  const { title, description, imageURL, price } = item;
 
   return (
-    <article key={id}>
+    <article>
       <div>
         <img src={imageURL} alt={title} />
         <div>
