@@ -9,7 +9,7 @@ export default function CategoryItem({ item, collectionName }) {
   const { dispatch } = useCategories();
 
   async function onDelete(id) {
-    const message = `Are you sure you want to delete this item?`;
+    const message = `Are you sure you want to delete ${title}?`;
     const result = window.confirm(message);
     if (!result) return;
 
@@ -23,7 +23,7 @@ export default function CategoryItem({ item, collectionName }) {
       <div>
         <h2>{title}</h2>
         <p>{description}</p>
-        <Link to="" className="small-btn view-menu">
+        <Link to={`/category/${id}`} className="small-btn view-menu">
           View Menu
         </Link>
         <button
