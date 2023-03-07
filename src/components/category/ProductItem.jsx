@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 
 export default function ProductItem({ item }) {
-  const { title, description, imageURL, price } = item;
+  const { id, title, description, imageURL, price } = item;
 
   return (
     <article>
@@ -9,7 +9,7 @@ export default function ProductItem({ item }) {
         <img src={imageURL} alt={title} />
         <div>
           <h3>
-            <Link to="">{title}</Link>
+            <Link to={`/product/${id}`}>{title}</Link>
           </h3>
           <span className="price">{price} SEK</span>
           <p>{description}</p>

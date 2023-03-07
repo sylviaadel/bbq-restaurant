@@ -9,6 +9,7 @@ import Footer from "./components/shared/Footer";
 import Admin from "./pages/Admin";
 import AdminMenu from "./pages/AdminMenu";
 import NotFound from "./pages/NotFound";
+import Product from "./pages/Product";
 
 export default function App() {
   const name = "categories";
@@ -20,6 +21,7 @@ export default function App() {
         <Route path="/" element={<Home collection={name} />} />
         <Route path="/menu" element={<Menu collection={name} />} />
         <Route path="/category/:id" element={<Category collection={name} />} />
+        <Route path="/product/:id" element={<Product collection={name} />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/admin" collection={name} element={<Admin />} />
         <Route path="/admin-menu" element={<AdminMenu collection={name} />} />
