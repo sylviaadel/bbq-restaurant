@@ -1,0 +1,39 @@
+@import "~leaflet/dist/leaflet.css";
+
+#Map {
+  padding: 2rem;
+  .leaflet-container {
+    height: calc(100vh - 295px);
+    margin-top: $spacing-small;
+    border-radius: 10px;
+    max-width: 950px;
+    z-index: 0;
+    margin: $spacing-small auto 0;
+    .leaflet-control-attribution.leaflet-control {
+      display: none;
+    }
+    .leaflet-popup-content-wrapper,
+    .leaflet-popup-tip {
+      background: $orangeColor;
+      color: $orangeColor;
+      font-weight: bold;
+      text-align: center;
+      border-radius: 5px;
+    }
+    .leaflet-popup-close-button {
+      span {
+        font-size: 20px;
+        font-weight: bold;
+      }
+    }
+  }
+}
+
+@media (min-width: 1200px) {
+  #Map {
+    .leaflet-container {
+      height: calc(100vh - 365px);
+      margin-top: $spacing-medium;
+    }
+  }
+}

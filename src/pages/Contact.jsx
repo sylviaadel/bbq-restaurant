@@ -6,7 +6,7 @@ import ChefImg from "../assets/images/chef-img.png";
 
 export default function Contact() {
   return (
-    <>
+    <section id="Contact">
       <header className="contact-header">
         <img src={ChefImg} alt="A chef holding a stick of meat pieces." />
       </header>
@@ -14,6 +14,6 @@ export default function Contact() {
       <BookTable />
       <Address />
       <Map />
-    </>
+    </section>
   );
 }
