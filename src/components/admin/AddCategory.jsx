@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { createDocument } from "../../scripts/fireStore/createDocument";
 import { useCategories } from "../../state/CategoriesProvider";
-import { validImageURL, validText } from "../../scripts/tests/addItem";
+import { validImageURL, validText } from "../../scripts/tests/addCategory";
 import { titleError, urlError, descError } from "../../scripts/addItemHelpers";
 
 export default function AddCategory({ collectionName }) {
