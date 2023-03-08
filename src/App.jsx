@@ -26,7 +26,7 @@ export default function App() {
           element={<Product collection={name} />}
         />
         <Route path="/contact" element={<Contact />} />
-        <Route path="/admin" collection={name} element={<Admin />} />
+        <Route path="/admin" element={<Admin collection={name} />} />
         <Route path="/admin-menu" element={<AdminMenu collection={name} />} />
         <Route path="*" element={<NotFound />} />
       </Routes>

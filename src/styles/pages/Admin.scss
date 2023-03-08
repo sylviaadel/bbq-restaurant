@@ -42,6 +42,12 @@
       margin-bottom: $spacing-large;
     }
     form {
+      .error-text {
+        color: #ee0000;
+        text-align: left;
+        margin: 0 0 $spacing-small 0;
+        font-size: 12px;
+      }
       label {
         margin-bottom: $spacing-medium;
         display: block;
@@ -66,6 +72,7 @@
           opacity: 0.9;
         }
         input[type="text"],
+        input[type="number"],
         textarea,
         select {
           border: solid 1px $orangeColor;
