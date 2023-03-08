@@ -4,34 +4,49 @@ import "react-datepicker/dist/react-datepicker.css";
 
 export default function BookTable() {
   const [date, setDate] = useState(new Date());
+  const [time, setTime] = useState(new Date());
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
 
-  function handleClick(event) {
-    event.preventDefault();
+  function onSubmit(e) {
+    e.preventDefault();
+    alert(`You have reserved a table with name: ${name} on: ${date}`);
   }
 
   return (
     <section className="book-table">
       <h3>Book a table</h3>
-      <form>
-        <input type="text" placeholder="Full Name" />
-        <input type="text" placeholder="Email" />
+      <form onSubmit={(e) => onSubmit(e)}>
+        <input
+          required
+          type="text"
+          placeholder="Full Name"
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+        />
+        <input
+          required
+          type="text"
+          placeholder="Email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+        />
         <DatePicker
+          required
           className="day-field"
           selected={date}
           onChange={(date) => setDate(date)}
         />
         <DatePicker
+          required
           className="time-field"
-          selected={date}
-          onChange={(date) => setDate(date)}
+          selected={time}
+          onChange={(time) => setTime(time)}
           showTimeSelect
           showTimeSelectOnly
-          timeIntervals={60}
           dateFormat="h:mm aa"
         />
-        <button className="primary-btn" onClick={handleClick}>
-          Book Now
-        </button>
+        <button className="primary-btn">Book Now</button>
       </form>
     </section>
   );
