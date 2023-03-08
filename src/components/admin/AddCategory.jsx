@@ -2,6 +2,8 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { createDocument } from "../../scripts/fireStore/createDocument";
 import { useCategories } from "../../state/CategoriesProvider";
+import { validImageURL, validText } from "../../scripts/tests/addItem";
+import { titleError, urlError, descError } from "../../scripts/addItemHelpers";
 
 export default function AddCategory({ collectionName }) {
   const { dispatch } = useCategories();
@@ -17,6 +19,13 @@ export default function AddCategory({ collectionName }) {
       description: description,
     };
     e.preventDefault();
+    if (
+      !validImageURL(data.imageURL) ||
+      !validText(data.title) ||
+      !validText(data.description)
+    ) {
+      e.preventDefault();
+    }
     const documentId = await createDocument(collectionName, data);
     dispatch({ type: "create", payload: { id: documentId, ...data } });
     navigate("/admin-menu");
@@ -32,6 +41,7 @@ export default function AddCategory({ collectionName }) {
           value={title}
           onChange={(e) => setTitle(e.target.value)}
         />
+        {validText(title) ? "" : titleError}
       </label>
       <label>
         <span>Image URL</span>
@@ -41,6 +51,7 @@ export default function AddCategory({ collectionName }) {
           value={imageURL}
           onChange={(e) => setImageURL(e.target.value)}
         />
+        {validImageURL(imageURL) ? "" : urlError}
       </label>
       <label>
         <span>Description</span>
@@ -49,6 +60,7 @@ export default function AddCategory({ collectionName }) {
           value={description}
           onChange={(e) => setDescription(e.target.value)}
         ></textarea>
+        {validText(description) ? "" : descError}
       </label>
       <button className="primary-btn">Add Category</button>
     </form>
