@@ -33,7 +33,7 @@ export default function Category({ collection }) {
   }
 
   const selectedProducts = products.map((product) => (
-    <ProductItem key={product.id} item={product} />
+    <ProductItem key={product.id} item={product} categoryID={id} />
   ));
   return (
     <>
