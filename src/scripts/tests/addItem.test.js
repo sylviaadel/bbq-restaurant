@@ -1,4 +1,4 @@
-import { validText, validItemPrice, validImageURL } from "./addItem";
+import { validText, validPrice, validImageURL } from "./addItem";
 
 test("Verify that the title is right", () => {
   //Arrange
@@ -116,7 +116,7 @@ test("Verify that price is not empty", () => {
   const price = null;
 
   //Action
-  const addedItemPrice = validItemPrice(price);
+  const addedItemPrice = validPrice(price);
 
   //Assert
   expect(addedItemPrice).toEqual(false);
@@ -127,7 +127,7 @@ test("Verify that price is not less than 1", () => {
   const price = -1;
 
   //Action
-  const addedItemPrice = validItemPrice(price);
+  const addedItemPrice = validPrice(price);
 
   //Assert
   expect(addedItemPrice).toEqual(false);
