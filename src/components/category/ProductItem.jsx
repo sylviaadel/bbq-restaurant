@@ -13,6 +13,7 @@ export default function ProductItem({ item, categoryID }) {
             <Link to={productLink}>{title}</Link>
           </h3>
           <span className="price">{price} SEK</span>
+          <div className="clear"></div>
           <p>{description}</p>
         </div>
       </div>

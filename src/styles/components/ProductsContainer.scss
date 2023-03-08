@@ -28,6 +28,7 @@
     }
     div {
       margin: auto;
+      width: 100%;
     }
     img {
       width: 55px;
@@ -51,6 +52,7 @@
       font-size: 18px;
       font-weight: bold;
       color: $blackColor;
+      line-height: 29px;
     }
   }
 }
@@ -64,6 +66,8 @@
       color: $beigeColor !important;
       .price {
         color: $beigeColor !important;
+        line-height: 45px;
+        font-size: 28px;
       }
       &:nth-child(odd) {
         background-color: transparent;
@@ -86,9 +90,6 @@
       a div {
         max-width: 560px;
         float: left;
-      }
-      .price {
-        font-size: 28px;
       }
     }
   }

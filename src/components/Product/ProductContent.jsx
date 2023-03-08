@@ -10,11 +10,12 @@ export default function ProductContent({ product, link }) {
     <div className="product-content">
       <h2>{title}</h2>
       <span className="price">{price} SEK</span>
+      <div className="clear"></div>
       <p>{description}</p>
       <h3>Ingredients</h3>
       <ul>{ingredients}</ul>
       <Link to={link} className="primary-btn">
-        Go Back
+        Back to Category
       </Link>
     </div>
   );

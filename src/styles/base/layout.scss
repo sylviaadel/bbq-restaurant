@@ -55,6 +55,10 @@ p {
   text-decoration: none;
 }
 
+.clear {
+  clear: both;
+}
+
 @media (min-width: 860px) {
   h1 {
     font-size: 55px;
