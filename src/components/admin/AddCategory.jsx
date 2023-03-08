@@ -25,10 +25,11 @@ export default function AddCategory({ collectionName }) {
       !validText(data.description)
     ) {
       e.preventDefault();
+    } else {
+      const documentId = await createDocument(collectionName, data);
+      dispatch({ type: "create", payload: { id: documentId, ...data } });
+      navigate("/admin-menu");
     }
-    const documentId = await createDocument(collectionName, data);
-    dispatch({ type: "create", payload: { id: documentId, ...data } });
-    navigate("/admin-menu");
   }
 
   return (
@@ -36,7 +37,6 @@ export default function AddCategory({ collectionName }) {
       <label>
         <span>Title</span>
         <input
-          required
           type="text"
           value={title}
           onChange={(e) => setTitle(e.target.value)}
@@ -46,7 +46,6 @@ export default function AddCategory({ collectionName }) {
       <label>
         <span>Image URL</span>
         <input
-          required
           type="text"
           value={imageURL}
           onChange={(e) => setImageURL(e.target.value)}
@@ -56,7 +55,6 @@ export default function AddCategory({ collectionName }) {
       <label>
         <span>Description</span>
         <textarea
-          required
           value={description}
           onChange={(e) => setDescription(e.target.value)}
         ></textarea>

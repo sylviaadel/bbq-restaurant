@@ -9,3 +9,6 @@ export const urlError = (
 export const descError = (
   <p className="error-text">Please enter a valid description.</p>
 );
+export const priceError = (
+  <p className="error-text">Please enter a valid Price.</p>
+);

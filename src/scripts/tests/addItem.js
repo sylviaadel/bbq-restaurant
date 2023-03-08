@@ -14,7 +14,7 @@ export function validImageURL(url) {
   return true;
 }
 
-export function validItemPrice(price) {
+export function validPrice(price) {
   if (price === null || price < 1) {
     return false;
   }
