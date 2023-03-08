@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { useParams, useRoutes } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { readDocuments } from "../scripts/fireStore/readDocuments";
 import { readProducts } from "../scripts/fireStore/readProducts";
 import { useCategories } from "../state/CategoriesProvider";
