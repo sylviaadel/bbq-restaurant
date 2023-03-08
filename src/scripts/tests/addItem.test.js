@@ -1,4 +1,4 @@
-import { validText, validItemPrice, validImageURL } from "./addCategory";
+import { validText, validItemPrice, validImageURL } from "./addItem";
 
 test("Verify that the title is right", () => {
   //Arrange
