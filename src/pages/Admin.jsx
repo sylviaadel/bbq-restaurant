@@ -26,11 +26,11 @@ export default function Admin({ collection }) {
       </section>
       <section id="add-category">
         <h2>Add a new Category</h2>
-        <AddCategory collectionName={collection} />
+        <AddCategory collection={collection} />
       </section>
       <section id="add-product">
         <h2>Add a new Product</h2>
-        <AddProduct />
+        <AddProduct collection={collection} />
       </section>
     </div>
   );

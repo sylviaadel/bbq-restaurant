@@ -5,7 +5,7 @@ import { useCategories } from "../../state/CategoriesProvider";
 import { validImageURL, validText } from "../../scripts/tests/addItem";
 import { titleError, urlError, descError } from "../../scripts/addItemHelpers";
 
-export default function AddCategory({ collectionName }) {
+export default function AddCategory({ collection }) {
   const { dispatch } = useCategories();
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
@@ -26,7 +26,7 @@ export default function AddCategory({ collectionName }) {
     ) {
       e.preventDefault();
     } else {
-      const documentId = await createDocument(collectionName, data);
+      const documentId = await createDocument(collection, data);
       dispatch({ type: "create", payload: { id: documentId, ...data } });
       navigate("/admin-menu");
     }
