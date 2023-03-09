@@ -7,6 +7,7 @@ import { validImageURL } from "../../scripts/tests/addItem";
 import { validText, validPrice } from "../../scripts/tests/addItem";
 import { titleError, urlError } from "../../scripts/addItemHelpers";
 import { descError, priceError } from "../../scripts/addItemHelpers";
+import TextBox from "./TextBox";
 
 export default function AddProduct({ collection }) {
   const { data, dispatch } = useCategories();
@@ -62,7 +63,7 @@ export default function AddProduct({ collection }) {
       debugger;
       const array = Array.from(ingredients.split(","));
       setIngredients(array);
-      console.log(ingredients);
+      // console.log(ingredients);
       const documentId = await createProduct(collection, categoryID, data);
       dispatch({ type: "create", payload: { id: documentId, ...data } });
       navigate("/menu");
@@ -74,28 +75,22 @@ export default function AddProduct({ collection }) {
       {data.title}
     </option>
   ));
-  //console.log(data[0].id);
+  // console.log(categories[0].props.value);
 
   return (
     <form onSubmit={(e) => onSubmit(e)}>
-      <label>
-        <span>Title</span>
-        <input
-          type="text"
-          value={title}
-          onChange={(e) => setTitle(e.target.value)}
-        />
-        {validText(title) ? "" : titleError}
-      </label>
-      <label>
-        <span>Image URL</span>
-        <input
-          type="text"
-          value={imageURL}
-          onChange={(e) => setImageURL(e.target.value)}
-        />
-        {validImageURL(imageURL) ? "" : urlError}
-      </label>
+      <TextBox
+        label="Title"
+        value={title}
+        onChange={(e) => setTitle(e.target.value)}
+        error={titleError}
+      />
+      <TextBox
+        label="Image URL"
+        value={imageURL}
+        onChange={(e) => setImageURL(e.target.value)}
+        error={urlError}
+      />
       <label>
         <span>Related Category</span>
         <select defaultValue={category} onChange={(e) => handleChange(e)}>
@@ -113,7 +108,7 @@ export default function AddProduct({ collection }) {
         {validPrice(price) ? "" : priceError}
       </label>
       <label>
-        <span>Ingredients</span>
+        <span>Ingredients (comma separated)</span>
         <textarea
           value={ingredients}
           onChange={(e) => setIngredients(e.target.value)}
