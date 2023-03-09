@@ -4,6 +4,7 @@ import Category from "../components/shared/CategoryItem";
 import logoImg from "../assets/images/logo-slogan.svg";
 import Spinner from "../components/shared/Spinner";
 import { useCategories } from "../state/CategoriesProvider";
+import { Link } from "react-router-dom";
 
 export default function Home({ collection }) {
   const { data, dispatch } = useCategories();
@@ -35,6 +36,9 @@ export default function Home({ collection }) {
           alt="A peace of meat with fork on grill along with restaurant name"
         />
         <p>Count On Us When It Comes To BBQ</p>
+        <Link to="/admin" className="small-btn">
+          Login as Admin
+        </Link>
       </section>
       {status === 0 && <Spinner />}
       {status === 1 && (
