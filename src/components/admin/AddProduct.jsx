@@ -77,12 +77,14 @@ export default function AddProduct({ collection }) {
         label="Title"
         value={title}
         onChange={(e) => setTitle(e.target.value)}
+        validate={validText(title)}
         error={titleError}
       />
       <TextBox
         label="Image URL"
         value={imageURL}
         onChange={(e) => setImageURL(e.target.value)}
+        validate={validImageURL(imageURL)}
         error={urlError}
       />
       <label>

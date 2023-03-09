@@ -1,11 +1,20 @@
-import { validText } from "../../scripts/tests/addItem";
-
-export default function TextBox({ label, value, onChange, error }) {
+export default function TextBox({
+  label,
+  value,
+  onChange,
+  validate,
+  error,
+  title,
+}) {
   return (
     <label>
       <span>{label}</span>
-      <input type="text" value={value} onChange={onChange} />
-      {validText(value) ? "" : error}
+      <input
+        type={title ? "text" : "number"}
+        value={value}
+        onChange={onChange}
+      />
+      {validate ? "" : error}
     </label>
   );
 }
