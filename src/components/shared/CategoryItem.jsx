@@ -9,7 +9,7 @@ export default function CategoryItem({ item, collectionName }) {
   const { dispatch } = useCategories();
 
   async function onDelete(id) {
-    const message = `Are you sure you want to delete ${title}?`;
+    const message = `Are you sure you want to delete ${title} Category?`;
     const result = window.confirm(message);
     if (!result) return;
 
