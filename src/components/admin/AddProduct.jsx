@@ -17,11 +17,9 @@ export default function AddProduct({ collection }) {
   const [imageURL, setImageURL] = useState("");
   const [price, setPrice] = useState("");
   const [ingredients, setIngredients] = useState([]);
-  const [category, setCategory] = useState({
-    category: "mhYdNkBR2LCrqJVAQbzZ",
-  });
+  const [category, setCategory] = useState(data[0].id);
   const navigate = useNavigate();
-  const categoryID = category.category;
+  //const categoryID = category.category;
 
   useEffect(() => {
     loadData(collection);
@@ -39,8 +37,8 @@ export default function AddProduct({ collection }) {
     setStatus(2);
   }
 
-  function handleChange(e) {
-    setCategory({ category: e.target.value });
+  function handleChangeCategory(e) {
+    setCategory(e.target.value);
   }
 
   async function onSubmit(e) {
@@ -49,7 +47,8 @@ export default function AddProduct({ collection }) {
       imageURL: imageURL,
       description: description,
       price: price,
-      ingredients: [ingredients],
+      ingredients: Array.from(ingredients.split(",")),
+      category: category,
     };
     e.preventDefault();
     if (
@@ -60,11 +59,7 @@ export default function AddProduct({ collection }) {
     ) {
       e.preventDefault();
     } else {
-      debugger;
-      const array = Array.from(ingredients.split(","));
-      setIngredients(array);
-      // console.log(ingredients);
-      const documentId = await createProduct(collection, categoryID, data);
+      const documentId = await createProduct(collection, category, data);
       dispatch({ type: "create", payload: { id: documentId, ...data } });
       navigate("/menu");
     }
@@ -75,7 +70,6 @@ export default function AddProduct({ collection }) {
       {data.title}
     </option>
   ));
-  // console.log(categories[0].props.value);
 
   return (
     <form onSubmit={(e) => onSubmit(e)}>
@@ -93,9 +87,7 @@ export default function AddProduct({ collection }) {
       />
       <label>
         <span>Related Category</span>
-        <select defaultValue={category} onChange={(e) => handleChange(e)}>
-          {categories}
-        </select>
+        <select onChange={(e) => handleChangeCategory(e)}>{categories}</select>
       </label>
       <label>
         <span>Price</span>
