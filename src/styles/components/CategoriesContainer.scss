@@ -1,11 +1,6 @@
 .CategoriesContainer {
   background-color: $beigeColor;
   article {
-    .category-img {
-      width: 100%;
-      height: 170px;
-      object-fit: cover;
-    }
     div {
       max-width: 305px;
       display: flex;
@@ -46,11 +41,6 @@
   .CategoriesContainer {
     article {
       display: flex;
-      .category-img {
-        height: 100%;
-        margin-bottom: 0;
-        width: 50%;
-      }
       div {
         max-width: 433px;
       }

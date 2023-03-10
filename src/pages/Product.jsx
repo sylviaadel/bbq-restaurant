@@ -16,7 +16,7 @@ export default function Product({ collection }) {
   const currentCategory = data.find((c) => c.id === id);
   let currentProduct = products.find((p) => p.id === productId);
   const categoryLink = `/category/${currentCategory?.id}`;
-  const placeholderImage =
+  const img =
     "https://www.shutterstock.com/image-vector/food-cover-flat-icon-on-260nw-438697456.jpg";
 
   useEffect(() => {
@@ -48,11 +48,7 @@ export default function Product({ collection }) {
         <section id="Product" key={currentProduct.id}>
           <header className="product-header">
             <img
-              src={
-                currentProduct.imageURL
-                  ? currentProduct.imageURL
-                  : placeholderImage
-              }
+              src={currentProduct.imageURL ? currentProduct.imageURL : img}
               onError={onImageError}
               alt={currentProduct.title}
             />

@@ -4,14 +4,14 @@ import { onImageError } from "../../helpers/AddProductHelper";
 export default function ProductItem({ item, categoryID }) {
   const { id, title, description, imageURL, price } = item;
   const productLink = `/category/${categoryID}/${id}`;
-  const placeholderImage =
+  const img =
     "https://www.shutterstock.com/image-vector/food-cover-flat-icon-on-260nw-438697456.jpg";
 
   return (
     <article>
       <div>
         <img
-          src={imageURL ? imageURL : placeholderImage}
+          src={imageURL ? imageURL : img}
           onError={onImageError}
           alt={title}
         />

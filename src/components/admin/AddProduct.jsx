@@ -19,7 +19,6 @@ export default function AddProduct({ collection }) {
   const [ingredients, setIngredients] = useState("");
   const [category, setCategory] = useState(data[0]?.id);
   const navigate = useNavigate();
-  //const categoryID = category.category;
 
   useEffect(() => {
     loadData(collection);

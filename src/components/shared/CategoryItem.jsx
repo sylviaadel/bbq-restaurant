@@ -1,17 +1,17 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
+import { useCategories } from "../../state/CategoriesProvider";
+import Modal from "./Modal";
+import { onImageError } from "../../helpers/AddProductHelper";
 import { deleteDocument } from "../../scripts/fireStore/deleteDocument";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { solid } from "@fortawesome/fontawesome-svg-core/import.macro"; // <-- import styles to be used
-import { useCategories } from "../../state/CategoriesProvider";
-import Modal from "./Modal";
-import { useState } from "react";
-import { onImageError } from "../../helpers/AddProductHelper";
 
 export default function CategoryItem({ item, collectionName }) {
   const { id, title, description, imageURL } = item;
   const { dispatch } = useCategories();
   const [isOpen, setIsOpen] = useState(false);
-  const placeholderImage =
+  const img =
     "https://www.shutterstock.com/image-vector/food-cover-flat-icon-on-260nw-438697456.jpg";
 
   async function confirmDeleteCategory() {
@@ -22,12 +22,7 @@ export default function CategoryItem({ item, collectionName }) {
 
   return (
     <article key={id}>
-      <img
-        className="category-img"
-        src={imageURL ? imageURL : placeholderImage}
-        onError={onImageError}
-        alt={title}
-      />
+      <img src={imageURL ? imageURL : img} onError={onImageError} alt={title} />
       <div>
         <h2>{title}</h2>
         <p>{description}</p>
