@@ -5,6 +5,7 @@ import { readProducts } from "../scripts/fireStore/readProducts";
 import { useCategories } from "../state/CategoriesProvider";
 import ProductItem from "../components/category/ProductItem";
 import Spinner from "../components/shared/Spinner";
+import NotFound from "./NotFound";
 
 export default function Category({ collection }) {
   let { id } = useParams();
@@ -17,10 +18,14 @@ export default function Category({ collection }) {
     loadData(collection);
   }, []);
   async function loadData(collection) {
-    const data = await readDocuments(collection).catch(onFail);
-    var result = await readProducts(`${collection}/${id}/products`);
-    setProducts(result);
-    onSuccess(data);
+    if (currentCategory == undefined) {
+      setStatus(2);
+    } else {
+      const data = await readDocuments(collection).catch(onFail);
+      var result = await readProducts(`${collection}/${id}/products`);
+      setProducts(result);
+      onSuccess(data);
+    }
   }
 
   function onSuccess(data) {
@@ -51,7 +56,7 @@ export default function Category({ collection }) {
           </div>
         </div>
       )}
-      {status === 2 && <p>Error</p>}
+      {status === 2 && <NotFound />}
     </>
   );
 }

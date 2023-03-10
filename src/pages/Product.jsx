@@ -5,6 +5,8 @@ import { readProducts } from "../scripts/fireStore/readProducts";
 import { useCategories } from "../state/CategoriesProvider";
 import Spinner from "../components/shared/Spinner";
 import ProductContent from "../components/Product/ProductContent";
+import NotFound from "../pages/NotFound";
+import { onImageError } from "../helpers/AddProductHelper";
 
 export default function Product({ collection }) {
   let { id, productId } = useParams();
@@ -13,17 +15,23 @@ export default function Product({ collection }) {
   const [products, setProducts] = useState([]);
   const currentCategory = data.find((c) => c.id === id);
   let currentProduct = products.find((p) => p.id === productId);
-  const categoryLink = `/category/${currentCategory.id}`;
+  const categoryLink = `/category/${currentCategory?.id}`;
+  const placeholderImage =
+    "https://www.shutterstock.com/image-vector/food-cover-flat-icon-on-260nw-438697456.jpg";
 
   useEffect(() => {
     loadData(collection);
   }, []);
 
   async function loadData(collection) {
-    const data = await readDocuments(collection).catch(onFail);
-    const result = await readProducts(`${collection}/${id}/products`);
-    setProducts(result);
-    onSuccess(data);
+    if (currentCategory === undefined) {
+      setStatus(2);
+    } else {
+      const data = await readDocuments(collection).catch(onFail);
+      const result = await readProducts(`${collection}/${id}/products`);
+      setProducts(result);
+      onSuccess(data);
+    }
   }
   function onSuccess(data) {
     dispatch({ type: "initializeArray", payload: data });
@@ -39,12 +47,20 @@ export default function Product({ collection }) {
       {status === 1 && (
         <section id="Product" key={currentProduct.id}>
           <header className="product-header">
-            <img src={currentProduct.imageURL} alt={currentProduct.title} />
+            <img
+              src={
+                currentProduct.imageURL
+                  ? currentProduct.imageURL
+                  : placeholderImage
+              }
+              onError={onImageError}
+              alt={currentProduct.title}
+            />
           </header>
           <ProductContent product={currentProduct} link={categoryLink} />
         </section>
       )}
-      {status === 2 && <p>Error</p>}
+      {status === 2 && <NotFound />}
     </>
   );
 }

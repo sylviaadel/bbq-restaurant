@@ -5,18 +5,14 @@ import { solid } from "@fortawesome/fontawesome-svg-core/import.macro"; // <-- i
 import { useCategories } from "../../state/CategoriesProvider";
 import Modal from "./Modal";
 import { useState } from "react";
+import { onImageError } from "../../helpers/AddProductHelper";
 
 export default function CategoryItem({ item, collectionName }) {
   const { id, title, description, imageURL } = item;
   const { dispatch } = useCategories();
   const [isOpen, setIsOpen] = useState(false);
-
   const placeholderImage =
-    "https://images.unsplash.com/photo-1511285605577-4d62fb50d2f7?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=876&q=80";
-
-  const onImageError = (e) => {
-    e.target.src = placeholderImage;
-  };
+    "https://www.shutterstock.com/image-vector/food-cover-flat-icon-on-260nw-438697456.jpg";
 
   async function confirmDeleteCategory() {
     await deleteDocument(collectionName, id);
