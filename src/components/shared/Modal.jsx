@@ -1,6 +1,10 @@
 import ReactDOM from "react-dom";
-export default function Modal({ open, onClose, onConfirm }) {
+export default function Modal({ open, onClose, onConfirmDelete }) {
   if (!open) return null;
+
+  function confirm() {
+    onConfirmDelete();
+  }
 
   return ReactDOM.createPortal(
     <div id="Modal">
@@ -12,7 +16,7 @@ export default function Modal({ open, onClose, onConfirm }) {
           <button className="link-btn" onClick={onClose}>
             Cancel
           </button>
-          <button className="modal-btn" onClick={onConfirm}>
+          <button className="modal-btn" onClick={confirm}>
             Yes
           </button>
         </div>

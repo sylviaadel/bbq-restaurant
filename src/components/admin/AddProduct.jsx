@@ -7,6 +7,7 @@ import { validImageURL } from "../../scripts/tests/addItem";
 import { validText, validPrice } from "../../scripts/tests/addItem";
 import { titleError, urlError } from "../../scripts/addItemHelpers";
 import { descError, priceError } from "../../scripts/addItemHelpers";
+import Spinner from "../shared/Spinner";
 import TextBox from "./TextBox";
 
 export default function AddProduct({ collection }) {
@@ -42,12 +43,13 @@ export default function AddProduct({ collection }) {
   }
 
   async function onSubmit(e) {
+    debugger;
     const data = {
       title: title,
       imageURL: imageURL,
       description: description,
       price: price,
-      ingredients: Array.from(ingredients.split(",")),
+      ingredients: ingredients.split(","),
       category: category,
     };
     e.preventDefault();
@@ -60,6 +62,7 @@ export default function AddProduct({ collection }) {
       e.preventDefault();
     } else {
       const documentId = await createProduct(collection, category, data);
+
       dispatch({ type: "create", payload: { id: documentId, ...data } });
       navigate("/menu");
     }
@@ -72,51 +75,59 @@ export default function AddProduct({ collection }) {
   ));
 
   return (
-    <form onSubmit={(e) => onSubmit(e)}>
-      <TextBox
-        label="Title"
-        value={title}
-        onChange={(e) => setTitle(e.target.value)}
-        validate={validText(title)}
-        error={titleError}
-      />
-      <TextBox
-        label="Image URL"
-        value={imageURL}
-        onChange={(e) => setImageURL(e.target.value)}
-        validate={validImageURL(imageURL)}
-        error={urlError}
-      />
-      <label>
-        <span>Related Category</span>
-        <select onChange={(e) => handleChangeCategory(e)}>{categories}</select>
-      </label>
-      <label>
-        <span>Price</span>
-        <input
-          type="number"
-          value={price}
-          onChange={(e) => setPrice(e.target.value)}
-        />
-        <span className="currency">SEK</span>
-        {validPrice(price) ? "" : priceError}
-      </label>
-      <label>
-        <span>Ingredients (comma separated)</span>
-        <textarea
-          value={ingredients}
-          onChange={(e) => setIngredients(e.target.value)}
-        ></textarea>
-      </label>
-      <label>
-        <span>Description</span>
-        <textarea
-          value={description}
-          onChange={(e) => setDescription(e.target.value)}
-        ></textarea>
-        {validText(description) ? "" : descError}
-      </label>
-      <button className="primary-btn">Add Product</button>
-    </form>
+    <>
+      {status === 0 && <Spinner />}
+      {status === 1 && (
+        <form onSubmit={(e) => onSubmit(e)}>
+          <TextBox
+            label="Title"
+            value={title}
+            onChange={(e) => setTitle(e.target.value)}
+            validate={validText(title)}
+            error={titleError}
+          />
+          <TextBox
+            label="Image URL"
+            value={imageURL}
+            onChange={(e) => setImageURL(e.target.value)}
+            validate={validImageURL(imageURL)}
+            error={urlError}
+          />
+          <label>
+            <span>Related Category</span>
+            <select onChange={(e) => handleChangeCategory(e)}>
+              {categories}
+            </select>
+          </label>
+          <label>
+            <span>Price</span>
+            <input
+              type="number"
+              value={price}
+              onChange={(e) => setPrice(e.target.value)}
+            />
+            <span className="currency">SEK</span>
+            {validPrice(price) ? "" : priceError}
+          </label>
+          <label>
+            <span>Ingredients (comma separated)</span>
+            <textarea
+              value={ingredients}
+              onChange={(e) => setIngredients(e.target.value)}
+            ></textarea>
+          </label>
+          <label>
+            <span>Description</span>
+            <textarea
+              value={description}
+              onChange={(e) => setDescription(e.target.value)}
+            ></textarea>
+            {validText(description) ? "" : descError}
+          </label>
+          <button className="primary-btn">Add Product</button>
+        </form>
+      )}
+      {status === 2 && <p>Error</p>}
+    </>
   );
 }
