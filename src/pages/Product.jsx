@@ -6,7 +6,7 @@ import { useCategories } from "../state/CategoriesProvider";
 import Spinner from "../components/shared/Spinner";
 import ProductContent from "../components/Product/ProductContent";
 import InvalidID from "./InvalidID";
-import { onImageError } from "../helpers/AddProductHelper";
+import { imageError } from "../helpers/AddProductHelper";
 
 export default function Product({ collection }) {
   let { id, productId } = useParams();
@@ -18,11 +18,9 @@ export default function Product({ collection }) {
   const categoryLink = `/category/${currentCategory?.id}`;
   const img =
     "https://www.shutterstock.com/image-vector/food-cover-flat-icon-on-260nw-438697456.jpg";
-
   useEffect(() => {
     loadData(collection);
   }, []);
-
   async function loadData(collection) {
     if (currentCategory === undefined) {
       setStatus(2);
@@ -49,7 +47,7 @@ export default function Product({ collection }) {
           <header className="product-header">
             <img
               src={currentProduct.imageURL ? currentProduct.imageURL : img}
-              onError={onImageError}
+              onError={imageError}
               alt={currentProduct.title}
             />
           </header>

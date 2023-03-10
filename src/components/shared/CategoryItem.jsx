@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { useCategories } from "../../state/CategoriesProvider";
 import Modal from "./Modal";
-import { onImageError } from "../../helpers/AddProductHelper";
+import { imageError } from "../../helpers/AddProductHelper";
 import { deleteDocument } from "../../scripts/fireStore/deleteDocument";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { solid } from "@fortawesome/fontawesome-svg-core/import.macro"; // <-- import styles to be used
@@ -22,7 +22,7 @@ export default function CategoryItem({ item, collectionName }) {
 
   return (
     <article key={id}>
-      <img src={imageURL ? imageURL : img} onError={onImageError} alt={title} />
+      <img src={imageURL ? imageURL : img} onError={imageError} alt={title} />
       <div>
         <h2>{title}</h2>
         <p>{description}</p>

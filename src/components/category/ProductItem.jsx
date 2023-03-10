@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { onImageError } from "../../helpers/AddProductHelper";
+import { imageError } from "../../helpers/AddProductHelper";
 
 export default function ProductItem({ item, categoryID }) {
   const { id, title, description, imageURL, price } = item;
@@ -10,11 +10,7 @@ export default function ProductItem({ item, categoryID }) {
   return (
     <article>
       <div>
-        <img
-          src={imageURL ? imageURL : img}
-          onError={onImageError}
-          alt={title}
-        />
+        <img src={imageURL ? imageURL : img} onError={imageError} alt={title} />
         <div>
           <h3>
             <Link to={productLink}>{title}</Link>
