@@ -3,6 +3,7 @@ import { readDocuments } from "../scripts/fireStore/readDocuments";
 import CategoryItem from "../components/shared/CategoryItem";
 import Spinner from "../components/shared/Spinner";
 import { useCategories } from "../state/CategoriesProvider";
+import NotFound from "./NotFound";
 
 export default function Menu({ collection }) {
   const { data, dispatch } = useCategories();
@@ -32,7 +33,7 @@ export default function Menu({ collection }) {
       <h1>Our Main Categories</h1>
       {status === 0 && <Spinner />}
       {status === 1 && <section className="categories-items">{Items}</section>}
-      {status === 2 && <p>Error</p>}
+      {status === 2 && <NotFound />}
     </div>
   );
 }

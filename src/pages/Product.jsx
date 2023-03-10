@@ -5,7 +5,7 @@ import { readProducts } from "../scripts/fireStore/readProducts";
 import { useCategories } from "../state/CategoriesProvider";
 import Spinner from "../components/shared/Spinner";
 import ProductContent from "../components/Product/ProductContent";
-import NotFound from "../pages/NotFound";
+import InvalidID from "./InvalidID";
 import { onImageError } from "../helpers/AddProductHelper";
 
 export default function Product({ collection }) {
@@ -56,7 +56,7 @@ export default function Product({ collection }) {
           <ProductContent product={currentProduct} link={categoryLink} />
         </section>
       )}
-      {status === 2 && <NotFound />}
+      {status === 2 && <InvalidID />}
     </>
   );
 }

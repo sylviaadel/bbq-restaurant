@@ -5,7 +5,7 @@ import { readProducts } from "../scripts/fireStore/readProducts";
 import { useCategories } from "../state/CategoriesProvider";
 import ProductItem from "../components/category/ProductItem";
 import Spinner from "../components/shared/Spinner";
-import NotFound from "./NotFound";
+import InvalidID from "./InvalidID";
 
 export default function Category({ collection }) {
   let { id } = useParams();
@@ -44,7 +44,7 @@ export default function Category({ collection }) {
     <>
       {status === 0 && <Spinner />}
       {status === 1 && (
-        <div id="Category">
+        <section id="Category">
           <header className="category-header">
             <img src={currentCategory.imageURL} alt={currentCategory.title} />
             <div className="backdrop"></div>
@@ -54,9 +54,9 @@ export default function Category({ collection }) {
             <p>{currentCategory.description}</p>
             <section className="ProductsContainer">{selectedProducts}</section>
           </div>
-        </div>
+        </section>
       )}
-      {status === 2 && <NotFound />}
+      {status === 2 && <InvalidID />}
     </>
   );
 }

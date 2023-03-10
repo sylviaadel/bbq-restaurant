@@ -30,7 +30,7 @@
     }
   }
   .book-table {
-    input[type="text"] {
+    input {
       border: solid 1px $orangeColor;
       border-radius: 5px;
       height: 51px;
@@ -116,14 +116,15 @@
         font-size: 20px;
       }
     }
-    .book-table input[type="text"] {
+    .book-table input {
       font-size: 20px;
       &.day-field {
         background: url(../../assets/images/calendar-icon.svg) no-repeat 98%
-          center;
+          center $whiteColor;
       }
       &.time-field {
-        background: url(../../assets/images/clock-icon.svg) no-repeat 98% center;
+        background: url(../../assets/images/clock-icon.svg) no-repeat 98% center
+          $whiteColor;
       }
     }
     .react-datepicker-popper {

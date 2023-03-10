@@ -3,10 +3,10 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 
 export default function BookTable() {
-  const [date, setDate] = useState(new Date());
-  const [time, setTime] = useState(new Date());
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
+  const [date, setDate] = useState(new Date());
+  const [time, setTime] = useState(new Date());
 
   function onSubmit(e) {
     e.preventDefault();
@@ -19,14 +19,12 @@ export default function BookTable() {
       <form onSubmit={(e) => onSubmit(e)}>
         <input
           required
-          type="text"
           placeholder="Full Name"
           value={name}
           onChange={(e) => setName(e.target.value)}
         />
         <input
           required
-          type="text"
           placeholder="Email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}

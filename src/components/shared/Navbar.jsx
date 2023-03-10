@@ -8,18 +8,14 @@ export default function Navbar() {
       <Link className="logo" to="/">
         Grill Bar
       </Link>
-      <ul>
-        <li>
-          <Link to="/menu">
-            <FontAwesomeIcon icon={solid("utensils")} /> Menu
-          </Link>
-        </li>
-        <li>
-          <Link to="/contact">
-            <FontAwesomeIcon icon={solid("phone")} /> Contact
-          </Link>
-        </li>
-      </ul>
+      <div>
+        <Link to="/menu">
+          <FontAwesomeIcon icon={solid("utensils")} /> Menu
+        </Link>
+        <Link to="/contact">
+          <FontAwesomeIcon icon={solid("phone")} /> Contact
+        </Link>
+      </div>
     </nav>
   );
 }

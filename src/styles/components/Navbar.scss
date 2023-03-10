@@ -16,21 +16,19 @@ nav.navbar {
     text-decoration: none;
     font-weight: bold;
   }
-  ul {
+  div {
     list-style: none;
-    li {
-      display: inline-block;
-      margin-left: $spacing-medium;
-      font-size: 18px;
-      font-weight: 600;
+    display: inline-block;
+    font-size: 18px;
+    font-weight: 600;
+    color: $beigeColor;
+    a {
       color: $beigeColor;
-      a {
-        color: $beigeColor;
-        text-decoration: none;
-        font-size: 18px;
-        svg {
-          margin-right: 5px;
-        }
+      text-decoration: none;
+      font-size: 18px;
+      margin-left: $spacing-medium;
+      svg {
+        margin-right: 5px;
       }
     }
   }
@@ -51,13 +49,11 @@ nav.navbar {
     .logo {
       font-size: 55px;
     }
-    ul {
-      li {
+    div {
+      a {
+        font-size: 30px;
+        font-weight: 600;
         margin-left: $spacing-xlarge;
-        a {
-          font-size: 30px;
-          font-weight: 600;
-        }
       }
     }
   }
