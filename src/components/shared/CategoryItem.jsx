@@ -10,15 +10,19 @@ export default function CategoryItem({ item, collectionName }) {
   const { id, title, description, imageURL } = item;
   const { dispatch } = useCategories();
   const [isOpen, setIsOpen] = useState(false);
+  const [confirm, setConfirm] = useState(false);
 
   async function onDelete(id) {
+    //debugger;
     setIsOpen(true);
     // const message = `Are you sure you want to delete ${title} Category?`;
     // const result = window.confirm(message);
     // if (!result) return;
-
-    // await deleteDocument(collectionName, id);
-    // dispatch({ type: "delete", payload: id });
+    if (confirm) {
+      await deleteDocument(collectionName, id);
+      dispatch({ type: "delete", payload: id });
+      //setIsOpen(false);
+    }
   }
 
   return (
@@ -32,15 +36,15 @@ export default function CategoryItem({ item, collectionName }) {
         </Link>
         <button
           className="delete-category small-btn"
-          onClick={() => onDelete(id)}
+          onClick={(e) => onDelete(id)}
         >
           <FontAwesomeIcon icon={solid("trash")} /> Delete category
         </button>
       </div>
       <Modal
         open={isOpen}
-        onClose={(e) => setIsOpen(false)}
-        message="Are you sure you want to delete this category?"
+        onClose={() => setIsOpen(false)}
+        onConfirm={() => setConfirm(true)}
       />
     </article>
   );
