@@ -4,6 +4,7 @@ import { createDocument } from "../../scripts/fireStore/createDocument";
 import { useCategories } from "../../state/CategoriesProvider";
 import { validImageURL, validText } from "../../scripts/tests/addItem";
 import { titleError, urlError, descError } from "../../scripts/addItemHelpers";
+import TextBox from "./TextBox";
 
 export default function AddCategory({ collection }) {
   const { dispatch } = useCategories();
@@ -34,24 +35,20 @@ export default function AddCategory({ collection }) {
 
   return (
     <form onSubmit={(e) => onSubmit(e)}>
-      <label>
-        <span>Title</span>
-        <input
-          type="text"
-          value={title}
-          onChange={(e) => setTitle(e.target.value)}
-        />
-        {validText(title) ? "" : titleError}
-      </label>
-      <label>
-        <span>Image URL</span>
-        <input
-          type="text"
-          value={imageURL}
-          onChange={(e) => setImageURL(e.target.value)}
-        />
-        {validImageURL(imageURL) ? "" : urlError}
-      </label>
+      <TextBox
+        label="Title"
+        value={title}
+        onChange={(e) => setTitle(e.target.value)}
+        validate={validText(title)}
+        error={titleError}
+      />
+      <TextBox
+        label="Image URL"
+        value={imageURL}
+        onChange={(e) => setImageURL(e.target.value)}
+        validate={validImageURL(imageURL)}
+        error={urlError}
+      />
       <label>
         <span>Description</span>
         <textarea

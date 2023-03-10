@@ -9,6 +9,7 @@ import { Link } from "react-router-dom";
 export default function Home({ collection }) {
   const { data, dispatch } = useCategories();
   const [status, setStatus] = useState(0);
+  const alt = "A peace of meat with fork on grill along with restaurant name";
 
   useEffect(() => {
     loadData(collection);
@@ -31,10 +32,7 @@ export default function Home({ collection }) {
   return (
     <div id="Home">
       <section className="Hero">
-        <img
-          src={logoImg}
-          alt="A peace of meat with fork on grill along with restaurant name"
-        />
+        <img src={logoImg} alt={alt} />
         <p>Count On Us When It Comes To BBQ</p>
         <Link to="/admin" className="small-btn">
           Login as Admin

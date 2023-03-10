@@ -4,13 +4,11 @@ import AddCategory from "../components/admin/AddCategory";
 import AddProduct from "../components/admin/AddProduct";
 
 export default function Admin({ collection }) {
+  const alt = "A peace of meat with fork on grill along with restaurant name";
   return (
     <div id="Admin">
       <section className="Hero">
-        <img
-          src={logoImg}
-          alt="A peace of meat with fork on grill along with restaurant name"
-        />
+        <img src={logoImg} alt={alt} />
         <h1>Welcome Admin</h1>
         <div className="btn-container">
           <a href="#add-category" className="small-btn">
