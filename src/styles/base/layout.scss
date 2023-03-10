@@ -54,6 +54,14 @@ p {
   align-items: center;
   text-decoration: none;
 }
+.link-btn {
+  font-size: 14px;
+  font-weight: bold;
+  background-color: transparent;
+  border: 0;
+  display: inline-flex;
+  cursor: pointer;
+}
 
 .clear {
   clear: both;
