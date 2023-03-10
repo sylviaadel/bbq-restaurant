@@ -5,42 +5,43 @@ import { solid } from "@fortawesome/fontawesome-svg-core/import.macro"; // <-- i
 import { useCategories } from "../../state/CategoriesProvider";
 import Modal from "./Modal";
 import { useState } from "react";
+import { onImageError } from "../../helpers/AddProductHelper";
 
 export default function CategoryItem({ item, collectionName }) {
   const { id, title, description, imageURL } = item;
   const { dispatch } = useCategories();
   const [isOpen, setIsOpen] = useState(false);
+  const placeholderImage =
+    "https://www.shutterstock.com/image-vector/food-cover-flat-icon-on-260nw-438697456.jpg";
 
-  async function onDelete(id) {
-    setIsOpen(true);
-    // const message = `Are you sure you want to delete ${title} Category?`;
-    // const result = window.confirm(message);
-    // if (!result) return;
-
-    // await deleteDocument(collectionName, id);
-    // dispatch({ type: "delete", payload: id });
+  async function confirmDeleteCategory() {
+    await deleteDocument(collectionName, id);
+    dispatch({ type: "delete", payload: id });
+    setIsOpen(false);
   }
 
   return (
     <article key={id}>
-      <img className="category-img" src={imageURL} alt={title} />
+      <img
+        className="category-img"
+        src={imageURL ? imageURL : placeholderImage}
+        onError={onImageError}
+        alt={title}
+      />
       <div>
         <h2>{title}</h2>
         <p>{description}</p>
         <Link to={`/category/${id}`} className="small-btn view-menu">
           View Menu
         </Link>
-        <button
-          className="delete-category small-btn"
-          onClick={() => onDelete(id)}
-        >
+        <button className="delete-category" onClick={(e) => setIsOpen(true)}>
           <FontAwesomeIcon icon={solid("trash")} /> Delete category
         </button>
       </div>
       <Modal
         open={isOpen}
-        onClose={(e) => setIsOpen(false)}
-        message="Are you sure you want to delete this category?"
+        onClose={() => setIsOpen(false)}
+        onConfirmDelete={confirmDeleteCategory}
       />
     </article>
   );

@@ -16,8 +16,8 @@ export default function AddProduct({ collection }) {
   const [description, setDescription] = useState("");
   const [imageURL, setImageURL] = useState("");
   const [price, setPrice] = useState("");
-  const [ingredients, setIngredients] = useState([]);
-  const [category, setCategory] = useState(data[0].id);
+  const [ingredients, setIngredients] = useState("");
+  const [category, setCategory] = useState(data[0]?.id);
   const navigate = useNavigate();
   //const categoryID = category.category;
 
@@ -25,7 +25,7 @@ export default function AddProduct({ collection }) {
     loadData(collection);
   }, []);
   async function loadData(collection) {
-    const data = await readDocuments(collection).catch(onFail);
+    const data = await readDocuments(collection);
     onSuccess(data);
   }
 
@@ -33,31 +33,26 @@ export default function AddProduct({ collection }) {
     dispatch({ type: "initializeArray", payload: data });
     setStatus(1);
   }
-  function onFail() {
-    setStatus(2);
-  }
 
   function handleChangeCategory(e) {
     setCategory(e.target.value);
   }
 
-  async function onSubmit(e) {
-    const data = {
+  async function onSubmit() {
+    var data = {
       title: title,
       imageURL: imageURL,
       description: description,
       price: price,
-      ingredients: Array.from(ingredients.split(",")),
+      ingredients: ingredients?.split(","),
       category: category,
     };
-    e.preventDefault();
     if (
       !validImageURL(data.imageURL) ||
       !validText(data.title) ||
       !validText(data.description) ||
       !validPrice(data.price)
     ) {
-      e.preventDefault();
     } else {
       const documentId = await createProduct(collection, category, data);
       dispatch({ type: "create", payload: { id: documentId, ...data } });
@@ -72,7 +67,12 @@ export default function AddProduct({ collection }) {
   ));
 
   return (
-    <form onSubmit={(e) => onSubmit(e)}>
+    <form
+      onSubmit={(e) => {
+        e.preventDefault();
+        onSubmit();
+      }}
+    >
       <TextBox
         label="Title"
         value={title}
