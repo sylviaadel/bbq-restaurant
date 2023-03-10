@@ -28,14 +28,16 @@ export default function CategoryItem({ item, collectionName }) {
   return (
     <article key={id}>
       <img className="category-img" src={imageURL} alt={title} />
-      <h2>{title}</h2>
-      <p>{description}</p>
-      <Link to={`/category/${id}`} className="small-btn view-menu">
-        View Menu
-      </Link>
-      <button className="delete-category" onClick={(e) => onDelete(id)}>
-        <FontAwesomeIcon icon={solid("trash")} /> Delete category
-      </button>
+      <div>
+        <h2>{title}</h2>
+        <p>{description}</p>
+        <Link to={`/category/${id}`} className="small-btn view-menu">
+          View Menu
+        </Link>
+        <button className="delete-category" onClick={(e) => onDelete(id)}>
+          <FontAwesomeIcon icon={solid("trash")} /> Delete category
+        </button>
+      </div>
       <Modal
         open={isOpen}
         onClose={() => setIsOpen(false)}

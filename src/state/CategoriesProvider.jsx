@@ -1,4 +1,4 @@
-import { createContext, useReducer, useContext, useState } from "react";
+import { createContext, useReducer, useContext } from "react";
 import { categoriesReducer } from "./CategoriesReducer";
 
 const Context = createContext(null);
