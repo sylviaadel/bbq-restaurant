@@ -4,6 +4,7 @@ import Address from "../components/contact/Address";
 import Map from "../components/contact/Map";
 import ChefImg from "../assets/images/chef-img.png";
 
+// good
 export default function Contact() {
   return (
     <section id="Contact">

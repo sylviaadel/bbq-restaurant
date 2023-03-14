@@ -5,6 +5,7 @@ import Spinner from "../components/shared/Spinner";
 import { useCategories } from "../state/CategoriesProvider";
 import NotFound from "./NotFound";
 
+// good
 export default function Menu({ collection }) {
   const { data, dispatch } = useCategories();
   const [status, setStatus] = useState(0);

@@ -17,6 +17,8 @@ export default function Category({ collection }) {
   useEffect(() => {
     loadData(collection);
   }, []);
+
+  // this load data else statement should problaby be the "onFailure() scenario"
   async function loadData(collection) {
     if (currentCategory == undefined) {
       setStatus(2);

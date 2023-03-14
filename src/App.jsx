@@ -21,6 +21,7 @@ export default function App() {
         <Route path="/" element={<Home collection={name} />} />
         <Route path="/menu" element={<Menu collection={name} />} />
         <Route path="/category/:id" element={<Category collection={name} />} />
+        {/* think how to make this fit in 1 line. naming -1 */}
         <Route
           path="/category/:id/:productId"
           element={<Product collection={name} />}

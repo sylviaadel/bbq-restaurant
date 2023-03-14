@@ -4,6 +4,7 @@ import CategoryItem from "../components/shared/CategoryItem";
 import Spinner from "../components/shared/Spinner";
 import { useCategories } from "../state/CategoriesProvider";
 
+// looks clean
 export default function Menu({ collection }) {
   const { data, dispatch } = useCategories();
   const [status, setStatus] = useState(0);

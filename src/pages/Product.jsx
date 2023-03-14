@@ -18,6 +18,8 @@ export default function Product({ collection }) {
   const categoryLink = `/category/${currentCategory?.id}`;
   const img =
     "https://www.shutterstock.com/image-vector/food-cover-flat-icon-on-260nw-438697456.jpg";
+
+  // this part looks messy, add  spaces for easier lecture. formatting -1
   useEffect(() => {
     loadData(collection);
   }, []);

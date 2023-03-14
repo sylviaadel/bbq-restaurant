@@ -1,5 +1,6 @@
 import { useLocation } from "react-router-dom";
 
+// good detail
 export default function NotFound() {
   let location = useLocation();
 

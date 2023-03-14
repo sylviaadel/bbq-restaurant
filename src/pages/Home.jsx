@@ -28,6 +28,7 @@ export default function Home({ collection }) {
   }
   const Items = data.map((item) => <Category key={item.id} item={item} />);
 
+  // this can be cleaned up for better readibility
   return (
     <div id="Home">
       <section className="Hero">
