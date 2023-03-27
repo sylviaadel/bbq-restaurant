@@ -33,9 +33,9 @@ export default function Home({ collection }) {
       <section className="Hero">
         <img src={logoImg} alt={alt} />
         <p>Count On Us When It Comes To BBQ</p>
-        <Link to="/admin" className="small-btn">
+        {/* <Link to="/admin" className="small-btn">
           Login as Admin
-        </Link>
+        </Link> */}
       </section>
       {status === 0 && <Spinner />}
       {status === 1 && (
